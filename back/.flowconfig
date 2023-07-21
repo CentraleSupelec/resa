@@ -1,0 +1,11 @@
+[include]
+
+[ignore]
+
+[libs]
+/flow-typed
+
+[lints]
+deprecated-utility=off
+
+[options]

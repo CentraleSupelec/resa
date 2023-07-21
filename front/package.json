@@ -1,0 +1,64 @@
+{
+  "name": "front",
+  "version": "1.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "PORT=80 react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix src/",
+    "prettier": "prettier --write \"src/**/*.*\""
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/react-fontawesome": "0.0.20",
+    "classnames": "^2.2.6",
+    "date-fns": "^1.29.0",
+    "fuse.js": "^3.2.0",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.29.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-collapse": "^4.0.3",
+    "react-csv": "^1.1.1",
+    "react-dimensions": "^1.3.1",
+    "react-dom": "^17.0.1",
+    "react-image": "^1.3.1",
+    "react-infinite-calendar": "^2.3.1",
+    "react-infinite-scroller": "^1.1.3",
+    "react-input-slider": "^4.0.1",
+    "react-motion": "^0.5.2",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.0",
+    "react-scripts": "3.0.1",
+    "react-sortablejs": "^1.3.6",
+    "react-tooltip": "^3.4.0",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "slugify": "^1.4.6",
+    "sortablejs": "1.6.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1",
+    "redux-logger": "^3.0.6"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

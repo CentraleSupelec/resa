@@ -1,0 +1,286 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  background-position: 0px;
+  background-repeat: no-repeat;
+  background-color: #f7f7f7;
+  color: #333333;
+  background-attachment: fixed;
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+}
+
+html,
+#root {
+  /* Necessary to allow vertical centering of login/logout buttons */
+  height: 100%;
+}
+
+p.reset {
+  margin: 0;
+}
+
+form.form-greylist input,
+form.form-greylist textarea {
+  background: white;
+}
+
+.bm {
+  margin-bottom: 24px;
+}
+
+.tm,
+p.tm {
+  margin-top: 24px;
+}
+
+pre {
+  background-color: #ddd;
+  margin: 1em 0;
+  padding: 0.7em 1em;
+}
+
+.light {
+  color: #666;
+}
+
+.btn-inlined {
+  line-height: 24px;
+  padding: 0 6px;
+}
+
+section {
+  padding-top: 50px;
+  margin-top: 50px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav > .nav-item {
+  text-align: center;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+li.separator {
+  margin: 12px 0;
+  border-top: 1px solid #ddd;
+}
+
+.custom-navbar-prop {
+  background: #9a1739;
+}
+
+.custom-font-size-16 {
+  font-size: 16px;
+}
+
+.custom-brand-font {
+  font-size: 25px !important;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.custom-hover-darkens {
+  cursor: pointer;
+}
+
+.custom-hover-darkens:hover {
+  background-color: #fafafa;
+  cursor: hand;
+}
+
+.row {
+  margin: 5px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #9a1739;
+  box-shadow: none;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::before {
+  box-shadow: none;
+}
+
+input[type='range'] {
+  width: 100%;
+}
+
+.custom-btn-cs {
+  background-color: #9a1739;
+  border-color: #9a1739;
+}
+
+.custom-btn-cs:hover {
+  background-color: #de2153;
+  border-color: #de2153;
+}
+
+.custom-sticky {
+  top: 100px;
+  z-index: auto;
+}
+
+.custom-gray-icon {
+  color: #a3a3a3;
+}
+
+.logout-button {
+  vertical-align: middle;
+}
+
+.custom-info-text-color {
+  color: #37474f;
+}
+
+.custom-text-color-cs {
+  color: #9a1739;
+}
+
+.emphasize {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.custom-alternative-text-color-navbar {
+  color: #be6b81 !important;
+  font-size: 25px;
+}
+
+@media (max-width: 576px) {
+  .custom-text-center-under-sm {
+    text-align: center;
+  }
+
+  .custom-no-margin-under-sm {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .custom-no-padding-under-sm {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .custom-text-center-under-lg {
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-text-right-above-lg {
+    text-align: right;
+  }
+}
+
+.custom-cursor-pointer {
+  cursor: pointer;
+}
+
+.custom-bg-grey {
+  background-color: #fefefe;
+}
+
+.u-slider-time {
+  position: relative;
+  display: inline-block;
+  background-color: #dfe0e4;
+  border-radius: 3px;
+  height: 4px;
+  width: 100%;
+  cursor: pointer;
+}
+.u-slider-time .value {
+  position: absolute;
+  background-color: #9a1739;
+  border-radius: 3px;
+  top: 0;
+  height: 100%;
+}
+.u-slider-time .handle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+}
+.u-slider-time .handle:after {
+  position: relative;
+  display: block;
+  content: '';
+  top: -6px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 3px solid #9a1739;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.custom-youtube-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.custom-youtube-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-width-auto {
+  width: auto;
+}
+
+.custom-disabled:hover {
+  cursor: not-allowed;
+}
+
+.custom-draggable {
+  min-height: 5em;
+  margin-bottom: 0.5em;
+  background-color: bisque;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 1px 1px #cecece;
+}
+
+.custom-draggable > li:hover {
+  cursor: pointer;
+}
+
+button.plain {
+  color: #007bff;
+  background: none;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+button.plain:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,22 @@
+site_name: Resa
+site_url: https://resa.centralesupelec.fr/recherche/
+site_description: Plateforme pour réserver des salles sur le campus
+site_author: CentraleSupélec
+
+repo_name: CentraleSupelec/resa
+repo_url: https://github.com/CentraleSupelec/resa
+
+theme:
+    name: material
+    palette:
+        primary: custom
+        accent: custom
+    logo: assets/icon.png
+    favicon: assets/icon.png
+
+markdown_extensions:
+    - attr_list
+    - md_in_html
+
+nav:
+    - 'Présentation': 'index.md'

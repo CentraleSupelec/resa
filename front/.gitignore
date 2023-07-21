@@ -1,0 +1,10 @@
+certs/
+node_modules/
+www/bundle.js
+.env*.local
+build/
+.DS_Store
+package-lock.json
+yarn.lock
+yarn-error.log
+src/config/config-*.js

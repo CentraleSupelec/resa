@@ -1,0 +1,21 @@
+// lib
+import querystring from 'querystring';
+// src
+import configBase from './config';
+const UPSACLAY_CAS_REGEX = /^resa-upsaclay/;
+const chooseHostContext = (config) => {
+  if (UPSACLAY_CAS_REGEX.test(window.location.hostname)) {
+    return { ...config, cas: config.altCas, back: config.altBack };
+  }
+  return config;
+};
+
+const config = chooseHostContext(configBase);
+
+const loginQuery = querystring.stringify({
+  service: config.cas.loginService,
+});
+
+export const loginRequest = `${config.cas.loginUrl}?${loginQuery}`;
+export const CAMPUSES = ['Saclay', 'Metz', 'Rennes'];
+export default config;

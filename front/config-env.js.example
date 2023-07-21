@@ -1,0 +1,19 @@
+/* 
+Use this example file to make your own config file.
+Put your own domain name instead of "hostname" but leave path after the hostname.
+*/
+
+const config = {
+  cas: {
+    loginUrl: "https://cas.hostname.fr/cas/login",
+    logoutUrl: "https://cas.hostname.fr/cas/logout",
+    loginService: "http://localhost/loginAccept/",
+    logoutService: "http://localhost/",
+  },
+  back: {
+    url: "http://localhost:3001/api",
+  },
+  imagesBaseURL: "http://resa.hostname.fr/roomImages/"
+};
+
+export default config;

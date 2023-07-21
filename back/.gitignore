@@ -1,0 +1,7 @@
+node_modules/
+.idea/
+secrets.json
+.DS_Store
+*.log
+package-lock.json
+certs/

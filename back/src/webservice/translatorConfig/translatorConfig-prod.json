@@ -1,0 +1,384 @@
+{
+  "room": {
+    "resourceType": {
+      "id": "1",
+      "code": "SAL"
+    },
+    "treeLocation": {
+      "92": "Saclay",
+      "94": "Metz",
+      "107": "Rennes"
+    },
+    "campus": {
+      "CodPro": "SIT",
+      "ValPro": {
+        "73": "Saclay",
+        "75": "Metz",
+        "74": "Rennes"
+      },
+      "requiredForImport": "true"
+    },
+    "building": {
+      "CodPro": "121",
+      "ValPro": {
+        "122": "Gustave Eiffel",
+        "123": "Francis Bouygues",
+        "124": "Louis-Charles Breguet",
+        "150": "Enseignement (Rennes)",
+        "176": "Enseignement (Metz)",
+        "197": "Lumen"
+      },
+      "requiredForImport": "true"
+    },
+    "wing": {
+      "CodPro": "122",
+      "ValPro": {
+        "125": "Vivant",
+        "126": "Énergie",
+        "127": "Matière",
+        "128": "Langues",
+        "129": "entreprise",
+        "130": "simulation",
+        "131": "homme & monde",
+        "132": "A",
+        "133": "B",
+        "134": "C",
+        "135": "D",
+        "136": "E",
+        "137": "F"
+      }
+    },
+    "floor": {
+      "CodPro": "123",
+      "ValPro": {
+        "138": "-1",
+        "139": "0",
+        "140": "1",
+        "141": "2",
+        "142": "3",
+        "143": "4",
+        "144": "5"
+      },
+      "requiredForImport": "true"
+    },
+    "capacity": {
+      "CodPro": "CAP",
+      "ValPro": "getValueDirectly",
+      "valueType": "integer",
+      "requiredForImport": "false"
+    },
+    "type": {
+      "CodPro": "45",
+      "ValPro": {
+        "102": "TP numérique",
+        "27": "Amphithéâtre",
+        "28": "Auditorium",
+        "100": "Enseignement",
+        "61": "Salle de musique",
+        "101": "Evénementiel",
+        "31": "Salle de réunion",
+        "70": "Salle de sport",
+        "103": "Plateau projet",
+        "121": "Studio d'enregistrement"
+      },
+      "requiredForImport": "true"
+    },
+    "videoRecording": {
+      "CodPro": "112",
+      "ValPro": {
+        "109": "true",
+        "110": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "code": {
+      "CodPro": "43",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "video": {
+      "CodPro": "113",
+      "ValPro": {
+        "111": "true",
+        "112": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "videoConference": {
+      "CodPro": "111",
+      "ValPro": {
+        "107": "true",
+        "108": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "audioConference": {
+      "CodPro": "115",
+      "ValPro": {
+        "119": "true",
+        "120": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "audio": {
+      "CodPro": "116",
+      "ValPro": {
+        "117": "true",
+        "118": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "liveStreaming": {
+      "CodPro": "117",
+      "ValPro": {
+        "115": "true",
+        "116": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "roomDelegate": {
+      "CodPro": "114",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "allowBookings": {
+      "CodPro": "118",
+      "ValPro": {
+        "113": "true",
+        "114": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "true"
+    },
+    "donator": {
+      "CodPro": "119",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "openSpace": {
+      "CodPro": "125",
+      "ValPro": {
+        "151": "true",
+        "152": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "belongsTo": {
+      "CodPro": "132",
+      "ValPro": {
+        "157": {
+          "groupId": 157,
+          "label": "DISI"
+        },
+        "158": {
+          "groupId": 158,
+          "label": "Musics"
+        },
+        "159": {
+          "groupId": 159,
+          "label": "DPIET"
+        },
+        "161": {
+          "groupId": 161,
+          "label": "DG"
+        },
+        "162": {
+          "groupId": 162,
+          "label": "DGS"
+        },
+        "180": {
+          "groupId": 180,
+          "label": "Musics-SECS"
+        },
+        "181": {
+          "groupId": 181,
+          "label": "Metz-Visio"
+        },
+        "182": {
+          "groupId": 182,
+          "label": "Rennes-Cours-TD"
+        },
+        "183": {
+          "groupId": 183,
+          "label": "Rennes-Visio"
+        },
+        "184": {
+          "groupId": 184,
+          "label": "Rennes-CRIS"
+        },
+        "185": {
+          "groupId": 185,
+          "label": "Rennes-Véhicules"
+        },
+        "186": {
+          "groupId": 186,
+          "label": "Entrepreunariat"
+        },
+        "188": {
+          "groupId": 188,
+          "label": "Volière"
+        },
+        "194": {
+          "groupId": 194,
+          "label": "Hub IA"
+        }
+      },
+      "valueType": "array"
+    },
+    "videoProviders": {
+      "CodPro": "145",
+      "ValPro": {
+        "186": {
+          "groupId": 186,
+          "label": "webex"
+        },
+        "187": {
+          "groupId": 187,
+          "label": "teams"
+        }
+      },
+      "valueType": "array"
+    },
+    "visioType": {
+      "CodPro": "145",
+      "ValPro": {
+        "187": "teams",
+        "189": "Visio Teams ou autres outils avec votre ordinateur",
+        "190": "Visio Teams uniquement"
+      },
+      "valueType": "string"
+    },
+    "modular": {
+      "CodPro": "124",
+      "ValPro": {
+        "153": "true",
+        "154": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "true"
+    },
+    "wifiForEducation": {
+      "CodPro": "129",
+      "ValPro": {
+        "155": "true",
+        "156": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "true"
+    },
+    "location": {
+      "CodPro": "131",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "area": {
+      "CodPro": "SUP",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "zrr": {
+      "CodPro": "138",
+      "ValPro": {
+        "174": "true",
+        "175": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "help": {
+      "CodPro": "140",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "department": {
+      "CodPro": "134",
+      "ValPro": {
+        "167": {
+          "groupId": 167,
+          "label": "Auto"
+        },
+        "171": {
+          "groupId": 171,
+          "label": "EM2C"
+        },
+        "170": {
+          "groupId": 170,
+          "label": "EXED"
+        },
+        "163": {
+          "groupId": 163,
+          "label": "Fabrique"
+        },
+        "169": {
+          "groupId": 169,
+          "label": "Info"
+        },
+        "172": {
+          "groupId": 172,
+          "label": "Meca-GC"
+        },
+        "168": {
+          "groupId": 168,
+          "label": "SE"
+        },
+        "165": {
+          "groupId": 165,
+          "label": "SigStat"
+        },
+        "166": {
+          "groupId": 166,
+          "label": "Telecom"
+        },
+        "164": {
+          "groupId": 164,
+          "label": "TP numérique"
+        }
+      },
+      "valueType": "array"
+    }
+  },
+  "event": {
+    "type": {
+      "RDV": "rendez-vous",
+      "MEM": "mémo",
+      "MAL": "maladie",
+      "ABS": "absence",
+      "215": "réunion",
+      "63": "activité annexe",
+      "64": "formation",
+      "65": "maintenance",
+      "66": "préparation",
+      "107": "Autre (Visite, Soutenance...)",
+      "217": "concours / admission"
+    },
+    "resource": {
+      "CodPro": "RES"
+    },
+    "author": {
+      "CodPro": "AUT"
+    },
+    "startTime": {
+      "CodPro": "DEB"
+    },
+    "endTime": {
+      "CodPro": "FIN"
+    },
+    "date": {
+      "CodPro": "DAT"
+    },
+    "active": "ACT"
+  }
+}

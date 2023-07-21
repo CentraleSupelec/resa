@@ -1,0 +1,405 @@
+{
+  "room": {
+    "resourceType": {
+      "id": "1",
+      "code": "SAL"
+    },
+    "treeLocation": {
+      "92": "Saclay",
+      "94": "Metz",
+      "107": "Rennes"
+    },
+    "campus": {
+      "CodPro": "SIT",
+      "ValPro": {
+        "73": "Saclay",
+        "75": "Metz",
+        "74": "Rennes"
+      },
+      "requiredForImport": "true"
+    },
+    "building": {
+      "CodPro": "121",
+      "ValPro": {
+        "122": "Gustave Eiffel",
+        "123": "Francis Bouygues",
+        "124": "Louis-Charles Breguet",
+        "145": "Enseignement (Rennes)",
+        "197": "Lumen"
+      },
+      "requiredForImport": "true"
+    },
+    "wing": {
+      "CodPro": "122",
+      "ValPro": {
+        "125": "Vivant",
+        "126": "Énergie",
+        "127": "Matière",
+        "128": "Langues",
+        "129": "entreprise",
+        "130": "simulation",
+        "131": "homme & monde",
+        "132": "A",
+        "133": "B",
+        "134": "C",
+        "135": "D",
+        "136": "E",
+        "137": "F"
+      }
+    },
+    "floor": {
+      "CodPro": "123",
+      "ValPro": {
+        "138": "-1",
+        "139": "0",
+        "140": "1",
+        "141": "2",
+        "142": "3",
+        "143": "4",
+        "144": "5"
+      },
+      "requiredForImport": "true"
+    },
+    "capacity": {
+      "CodPro": "CAP",
+      "ValPro": "getValueDirectly",
+      "valueType": "integer",
+      "requiredForImport": "false"
+    },
+    "type": {
+      "CodPro": "45",
+      "ValPro": {
+        "102": "TP numérique",
+        "27": "Amphithéâtre",
+        "28": "Auditorium",
+        "100": "Enseignement",
+        "61": "Salle de musique",
+        "101": "Evénementiel",
+        "31": "Salle de réunion",
+        "70": "Salle de sport",
+        "103": "Plateau projet",
+        "121": "Studio d'enregistrement"
+      },
+      "requiredForImport": "true"
+    },
+    "videoRecording": {
+      "CodPro": "112",
+      "ValPro": {
+        "109": "true",
+        "110": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "code": {
+      "CodPro": "43",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "video": {
+      "CodPro": "113",
+      "ValPro": {
+        "111": "true",
+        "112": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "videoConference": {
+      "CodPro": "111",
+      "ValPro": {
+        "107": "true",
+        "108": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "audioConference": {
+      "CodPro": "115",
+      "ValPro": {
+        "119": "true",
+        "120": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "audio": {
+      "CodPro": "116",
+      "ValPro": {
+        "117": "true",
+        "118": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "liveStreaming": {
+      "CodPro": "117",
+      "ValPro": {
+        "115": "true",
+        "116": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "allowBookings": {
+      "CodPro": "118",
+      "ValPro": {
+        "113": "false",
+        "114": "true"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "true"
+    },
+    "donator": {
+      "CodPro": "119",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "openSpace": {
+      "CodPro": "131",
+      "ValPro": {
+        "156": "true",
+        "157": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "belongsTo": {
+      "CodPro": "128",
+      "ValPro": {
+        "153": {
+          "groupId": 153,
+          "label": "DISI"
+        },
+        "152": {
+          "groupId": 152,
+          "label": "Musics"
+        },
+        "162": {
+          "groupId": 162,
+          "label": "DPIET"
+        },
+        "160": {
+          "groupId": 160,
+          "label": "DG"
+        },
+        "161": {
+          "groupId": 161,
+          "label": "DGS"
+        },
+        "180": {
+          "groupId": 180,
+          "label": "Musics-SECS"
+        },
+        "181": {
+          "groupId": 181,
+          "label": "Metz-Visio"
+        }
+      },
+      "valueType": "array"
+    },
+    "videoProviders": {
+      "CodPro": "140",
+      "ValPro": {
+        "175": {
+          "groupId": 175,
+          "label": "webex"
+        },
+        "176": {
+          "groupId": 176,
+          "label": "teams"
+        }
+      },
+      "valueType": "array"
+    },
+    "visioType": {
+      "CodPro": "140",
+      "ValPro": {
+        "176": "teams",
+        "177": "Visio Teams ou autres outils avec votre ordinateur",
+        "178": "Visio Teams uniquement"
+      },
+      "valueType": "string"
+    },
+    "modular": {
+      "CodPro": "127",
+      "ValPro": {
+        "149": "true",
+        "150": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "true"
+    },
+    "wifiForEducation": {
+      "CodPro": "132",
+      "ValPro": {
+        "158": "true",
+        "159": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "true"
+    },
+    "location": {
+      "CodPro": "130",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "area": {
+      "CodPro": "SUP",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "zrr": {
+      "CodPro": "136",
+      "ValPro": {
+        "171": "true",
+        "172": "false"
+      },
+      "valueType": "boolean",
+      "requiredForImport": "false"
+    },
+    "help": {
+      "CodPro": "139",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "department": {
+      "CodPro": "129",
+      "ValPro": {
+        "154": {
+          "groupId": 154,
+          "label": "Auto"
+        },
+        "155": {
+          "groupId": 155,
+          "label": "EM2C"
+        },
+        "163": {
+          "groupId": 163,
+          "label": "EXED"
+        },
+        "164": {
+          "groupId": 164,
+          "label": "Fabrique"
+        },
+        "165": {
+          "groupId": 165,
+          "label": "Info"
+        },
+        "166": {
+          "groupId": 166,
+          "label": "Meca-GC"
+        },
+        "167": {
+          "groupId": 167,
+          "label": "SE"
+        },
+        "168": {
+          "groupId": 168,
+          "label": "SigStat"
+        },
+        "169": {
+          "groupId": 169,
+          "label": "Telecom"
+        },
+        "170": {
+          "groupId": 170,
+          "label": "TP numérique"
+        }
+      },
+      "valueType": "array"
+    }
+  },
+  "event": {
+    "type": {
+      "RDV": "rendez-vous",
+      "MEM": "mémo",
+      "MAL": "maladie",
+      "ABS": "absence",
+      "215": "réunion",
+      "63": "activité annexe",
+      "64": "formation",
+      "65": "maintenance",
+      "66": "préparation",
+      "107": "Autre (Visite, Soutenance...)",
+      "217": "concours / admission"
+    },
+    "resource": {
+      "CodPro": "RES"
+    },
+    "author": {
+      "CodPro": "AUT"
+    },
+    "startTime": {
+      "CodPro": "DEB"
+    },
+    "endTime": {
+      "CodPro": "FIN"
+    },
+    "date": {
+      "CodPro": "DAT"
+    },
+    "active": "ACT"
+  },
+  "vehicule": {
+    "resourceType": {
+      "id": "3",
+      "code": "3"
+    },
+    "plateNumber": {
+      "CodPro": "107",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "description": {
+      "CodPro": "DES",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "photo": {
+      "CodPro": "81",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "delegate": {
+      "CodPro": "89",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    }
+  },
+  "video": {
+    "resourceType": {
+      "id": "11",
+      "code": "11"
+    },
+    "roomId": {
+      "CodPro": "124",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
+    "roomNumber": {
+      "CodPro": "125",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "true"
+    },
+    "terminal": {
+      "CodPro": "126",
+      "ValPro": {
+        "146": "Cisco MX700",
+        "147": "Cisco SX80",
+        "148": "Cisco SX80 avec iPad"
+      }
+    }
+  }
+}

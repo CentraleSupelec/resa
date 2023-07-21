@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  mongodb:
+    container_name: resa-mongo
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - "~/data:/data/db"
+
+  mailhog:
+    container_name: resa-mailhog
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - ${MAILHOG_PORT_SMTP:-1025}:1025
+      - ${MAILHOG_PORT_HTTP:-8025}:8025
+volumes:
+  build:
