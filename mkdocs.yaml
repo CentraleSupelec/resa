@@ -7,16 +7,18 @@ repo_name: CentraleSupelec/resa
 repo_url: https://github.com/CentraleSupelec/resa
 
 theme:
-    name: material
-    palette:
-        primary: custom
-        accent: custom
-    logo: assets/icon.png
-    favicon: assets/icon.png
+  name: material
+  palette:
+    primary: custom
+    accent: custom
+  logo: assets/logo.svg
+  favicon: assets/favicon.ico
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
-    - attr_list
-    - md_in_html
+  - attr_list
+  - md_in_html
 
 nav:
-    - 'Présentation': 'index.md'
+  - "Présentation": "index.md"
