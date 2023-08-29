@@ -15,11 +15,11 @@ module.exports = {
   },
   parisSaclayGeodeId: secrets.parisSaclayGeodeId,
   webservice: {
-    sessionurl:secrets.webservice.sessionurl,
+    sessionurl: secrets.webservice.sessionurl,
     agendaurl: secrets.webservice.agendaurl,
     annuaireurl: secrets.webservice.annuaireurl,
     user: secrets.webservice.user,
-    password: secrets.webservicePassword,
+    password: secrets.webservice.password,
   },
   geodeDSClient: secrets.geodeDSClient,
   geodeDSRoot: secrets.geodeDSRoot,

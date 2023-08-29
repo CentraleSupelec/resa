@@ -1,18 +1,12 @@
 // lib
 import React from 'react';
 import PropTypes from 'prop-types';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faBan } from '@fortawesome/fontawesome-free-solid';
-import moment from 'moment';
 import 'moment/locale/fr';
 // src
 import extractResources from 'services/extractResources';
 import RoomResource from 'containers/partials/RoomResource';
 
-const Room = ({
-  room, handleSelectRoomToBook, selectedDate,
-}) => {
-
+const Room = ({ room, handleSelectRoomToBook, selectedDate }) => {
   return (
     <div
       className="card custom-hover-darkens mb-3"

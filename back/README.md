@@ -19,7 +19,7 @@ You will need git and yarn (or npm, but yarn is used during deployment).
 Clone (with master branch)
 
 ```console
-git clone 
+git clone
 cd back
 ```
 
@@ -40,13 +40,13 @@ Alternatively, using docker:
 Alternatively, using docker-compose:
 
 - Start docker containers `docker-compose up -d`
-- Connect to mongo service with mongosh `docker exec -it resa-mongo mongosh`
+- Connect to mongo service with mongosh `docker-compose exec -it mongodb mongosh`
 
 Then create the user `resa` on the database, this is the express application user:
 
 ```mongodb
 use resa;
-db.createUser({ user: <mongo username>, roles: ["readWrite"], pwd: <mongo password> });
+db.createUser({ user: "resa", roles: ["readWrite"], pwd: "resa" });
 ```
 
 To add yourself as an admin for resa, and after connecting to mongo:
@@ -66,7 +66,7 @@ You may now close the connection to the mongo shell.
 
 ### Configuring
 
-Create `src/config/config-<env>.js` (env should be one of: prod, pre-prod, dev and must be set in the .env file):
+Create `src/config/secrets.js`:
 
 ```js
 // eslint-disable-next-line
@@ -78,15 +78,13 @@ module.exports = {
     rscUrl: "https://<your-cas-url>/cas/p3/serviceValidate",
     service: "https://<resa-base-url>/loginAccept/",
   },
-  webservice: { // All of these settings should end in .asmx?wsdl
-    sessionurl: 
-      "<openportal-session-url>",
-    agendaurl:
-      "<openportal-agenda-url>",
-    annuaireurl:
-      "<openportal-annuaire-url>",
-    user: "u.webservices",
-    password: secrets.prod.webservicePassword,
+  webservice: {
+    // All of these settings should end in .asmx?wsdl
+    sessionurl: "<openportal-session-url>",
+    agendaurl: "<openportal-agenda-url>",
+    annuaireurl: "<openportal-annuaire-url>",
+    user: "u.<openportal-user>",
+    password: "<openportal-password>",
   },
   geodeDSClient: secrets.prod.geodeDSClient,
   geodeDSRoot: "https://geode-ds.centralesupelec.fr",
@@ -97,7 +95,8 @@ module.exports = {
     salt: secrets.prod.cypherSalt,
     tokenSecret: secrets.prod.tokenSalt,
   },
-  smtp: { // SMTP server used for sending confirmation email after a reservation
+  smtp: {
+    // SMTP server used for sending confirmation email after a reservation
     host: "",
     port: "",
   },
@@ -108,7 +107,6 @@ module.exports = {
   public: {},
   db: secrets.prod.db,
 };
-
 ```
 
 Create `src/config/secrets.json`:
@@ -175,6 +173,7 @@ Launch the app (see port default setting in `bin/www` file):
 ```console
 $ yarn dev
 ```
+
 ## Other scripts
 
 Connect to the mongo shell:
@@ -190,7 +189,7 @@ Two dockerfiles are available for both backend and frontend.
 ### Backend setup
 
 Create the secrets.json file in the folder config and fill it to match the config.js file (this app was designed to mount this file as a kubernetes secret, but you can keep the syntax anyway).
-In the folder back run : ``` docker build -t backend .``` puis ``` docker run -p 3001:3001 backend```
+In the folder back run : ` docker build -t backend .` puis ` docker run -p 3001:3001 backend`
 
 ## A note on GEODE translation
 

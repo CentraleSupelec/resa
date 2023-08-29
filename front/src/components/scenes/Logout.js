@@ -2,7 +2,7 @@
 import React from 'react';
 import querystring from 'querystring';
 // src
-import config from 'config';
+import config from '../../config';
 
 export default class Logout extends React.Component {
   componentDidMount() {

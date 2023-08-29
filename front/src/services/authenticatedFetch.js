@@ -1,5 +1,5 @@
 // src
-import config from 'config';
+import config from '../config';
 import { dispatch, getJWT } from 'store';
 import { disconnect } from 'actions/user';
 

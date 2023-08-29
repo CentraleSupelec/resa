@@ -5,17 +5,17 @@ FROM node:14 AS development
 WORKDIR /app
 ENV REACT_APP_CAS_LOGIN_URL="https://cas.example.fr/login"
 ENV REACT_APP_CAS_LOGOUT_URL="https://cas.example.fr/logout"
-ENV REACT_APP_CAS_LOGIN_SERVICE="https://resa.example.fr/loginAccept/"
-ENV REACT_APP_CAS_LOGOUT_SERVICE="https://resa.example.fr/"
-ENV REACT_APP_BACK_URL="https://resa.example.fr/api"
-ENV REACT_APP_IMAGES_BASE_URL="https://resa.example.fr/roomImages/"
+ENV REACT_APP_CAS_LOGIN_SERVICE="/loginAccept/"
+ENV REACT_APP_CAS_LOGOUT_SERVICE="/"
+ENV REACT_APP_BACK_URL="/api"
+ENV REACT_APP_IMAGES_BASE_URL="/roomImages/"
 
 # If you want to use two different CAS
 ENV REACT_APP_ALT_CAS_LOGIN_URL="https://altCas.example.fr/login"
 ENV REACT_APP_ALT_CAS_LOGOUT_URL="https://altCas.example.fr/logout"
-ENV REACT_APP_ALT_CAS_LOGIN_SERVICE="https://resa-alt.example.fr/loginAccept/"
-ENV REACT_APP_ALT_CAS_LOGOUT_SERVICE="https://resa-alt.example.fr/"
-ENV REACT_APP_ALT_BACK_URL="https://resa-alt.example.fr/api"
+ENV REACT_APP_ALT_CAS_LOGIN_SERVICE="/loginAccept/"
+ENV REACT_APP_ALT_CAS_LOGOUT_SERVICE="/"
+ENV REACT_APP_ALT_BACK_URL="/api"
 
 # Copy app definition
 COPY . .

@@ -5,7 +5,7 @@ import OptionalImage from 'react-image';
 import moment from 'moment';
 import 'moment/locale/fr';
 // src
-import config from 'config';
+import config from '../../../config';
 import EventList from 'components/partials/EventList';
 import LoadSpinner from 'components/partials/LoadSpinner';
 import BookingSummary from 'components/partials/BookingSummary';
@@ -13,16 +13,18 @@ import Response from './Response';
 
 const imageExtension = 'jpg';
 
-const request = (url, method, { onClick, cb }) => (event) => {
-  if (event) {
-    event.preventDefault();
-  }
-  onClick(event);
-  return fetch(url, { method })
-    .then((res) => res.json())
-    .then((res) => cb(res, null))
-    .catch((error) => cb(null, error));
-};
+const request =
+  (url, method, { onClick, cb }) =>
+  (event) => {
+    if (event) {
+      event.preventDefault();
+    }
+    onClick(event);
+    return fetch(url, { method })
+      .then((res) => res.json())
+      .then((res) => cb(res, null))
+      .catch((error) => cb(null, error));
+  };
 
 class Choices extends Component {
   static propTypes = {

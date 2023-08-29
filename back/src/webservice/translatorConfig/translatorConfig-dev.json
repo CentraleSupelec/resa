@@ -24,7 +24,8 @@
         "122": "Gustave Eiffel",
         "123": "Francis Bouygues",
         "124": "Louis-Charles Breguet",
-        "145": "Enseignement (Rennes)",
+        "150": "Enseignement (Rennes)",
+        "176": "Enseignement (Metz)",
         "197": "Lumen"
       },
       "requiredForImport": "true"
@@ -142,11 +143,17 @@
       "valueType": "boolean",
       "requiredForImport": "false"
     },
+    "roomDelegate": {
+      "CodPro": "114",
+      "ValPro": "getValueDirectly",
+      "valueType": "string",
+      "requiredForImport": "false"
+    },
     "allowBookings": {
       "CodPro": "118",
       "ValPro": {
-        "113": "false",
-        "114": "true"
+        "113": "true",
+        "114": "false"
       },
       "valueType": "boolean",
       "requiredForImport": "true"
@@ -158,35 +165,35 @@
       "requiredForImport": "false"
     },
     "openSpace": {
-      "CodPro": "131",
+      "CodPro": "125",
       "ValPro": {
-        "156": "true",
-        "157": "false"
+        "151": "true",
+        "152": "false"
       },
       "valueType": "boolean",
       "requiredForImport": "false"
     },
     "belongsTo": {
-      "CodPro": "128",
+      "CodPro": "132",
       "ValPro": {
-        "153": {
-          "groupId": 153,
+        "157": {
+          "groupId": 157,
           "label": "DISI"
         },
-        "152": {
-          "groupId": 152,
+        "158": {
+          "groupId": 158,
           "label": "Musics"
         },
-        "162": {
-          "groupId": 162,
+        "159": {
+          "groupId": 159,
           "label": "DPIET"
-        },
-        "160": {
-          "groupId": 160,
-          "label": "DG"
         },
         "161": {
           "groupId": 161,
+          "label": "DG"
+        },
+        "162": {
+          "groupId": 162,
           "label": "DGS"
         },
         "180": {
@@ -196,53 +203,81 @@
         "181": {
           "groupId": 181,
           "label": "Metz-Visio"
+        },
+        "182": {
+          "groupId": 182,
+          "label": "Rennes-Cours-TD"
+        },
+        "183": {
+          "groupId": 183,
+          "label": "Rennes-Visio"
+        },
+        "184": {
+          "groupId": 184,
+          "label": "Rennes-CRIS"
+        },
+        "185": {
+          "groupId": 185,
+          "label": "Rennes-Véhicules"
+        },
+        "186": {
+          "groupId": 186,
+          "label": "Entrepreunariat"
+        },
+        "188": {
+          "groupId": 188,
+          "label": "Volière"
+        },
+        "194": {
+          "groupId": 194,
+          "label": "Hub IA"
         }
       },
       "valueType": "array"
     },
     "videoProviders": {
-      "CodPro": "140",
+      "CodPro": "145",
       "ValPro": {
-        "175": {
-          "groupId": 175,
+        "186": {
+          "groupId": 186,
           "label": "webex"
         },
-        "176": {
-          "groupId": 176,
+        "187": {
+          "groupId": 187,
           "label": "teams"
         }
       },
       "valueType": "array"
     },
     "visioType": {
-      "CodPro": "140",
+      "CodPro": "145",
       "ValPro": {
-        "176": "teams",
-        "177": "Visio Teams ou autres outils avec votre ordinateur",
-        "178": "Visio Teams uniquement"
+        "187": "teams",
+        "189": "Visio Teams ou autres outils avec votre ordinateur",
+        "190": "Visio Teams uniquement"
       },
       "valueType": "string"
     },
     "modular": {
-      "CodPro": "127",
+      "CodPro": "124",
       "ValPro": {
-        "149": "true",
-        "150": "false"
+        "153": "true",
+        "154": "false"
       },
       "valueType": "boolean",
       "requiredForImport": "true"
     },
     "wifiForEducation": {
-      "CodPro": "132",
+      "CodPro": "129",
       "ValPro": {
-        "158": "true",
-        "159": "false"
+        "155": "true",
+        "156": "false"
       },
       "valueType": "boolean",
       "requiredForImport": "true"
     },
     "location": {
-      "CodPro": "130",
+      "CodPro": "131",
       "ValPro": "getValueDirectly",
       "valueType": "string",
       "requiredForImport": "false"
@@ -254,61 +289,61 @@
       "requiredForImport": "false"
     },
     "zrr": {
-      "CodPro": "136",
+      "CodPro": "138",
       "ValPro": {
-        "171": "true",
-        "172": "false"
+        "174": "true",
+        "175": "false"
       },
       "valueType": "boolean",
       "requiredForImport": "false"
     },
     "help": {
-      "CodPro": "139",
+      "CodPro": "140",
       "ValPro": "getValueDirectly",
       "valueType": "string",
       "requiredForImport": "false"
     },
     "department": {
-      "CodPro": "129",
+      "CodPro": "134",
       "ValPro": {
-        "154": {
-          "groupId": 154,
-          "label": "Auto"
-        },
-        "155": {
-          "groupId": 155,
-          "label": "EM2C"
-        },
-        "163": {
-          "groupId": 163,
-          "label": "EXED"
-        },
-        "164": {
-          "groupId": 164,
-          "label": "Fabrique"
-        },
-        "165": {
-          "groupId": 165,
-          "label": "Info"
-        },
-        "166": {
-          "groupId": 166,
-          "label": "Meca-GC"
-        },
         "167": {
           "groupId": 167,
-          "label": "SE"
+          "label": "Auto"
         },
-        "168": {
-          "groupId": 168,
-          "label": "SigStat"
-        },
-        "169": {
-          "groupId": 169,
-          "label": "Telecom"
+        "171": {
+          "groupId": 171,
+          "label": "EM2C"
         },
         "170": {
           "groupId": 170,
+          "label": "EXED"
+        },
+        "163": {
+          "groupId": 163,
+          "label": "Fabrique"
+        },
+        "169": {
+          "groupId": 169,
+          "label": "Info"
+        },
+        "172": {
+          "groupId": 172,
+          "label": "Meca-GC"
+        },
+        "168": {
+          "groupId": 168,
+          "label": "SE"
+        },
+        "165": {
+          "groupId": 165,
+          "label": "SigStat"
+        },
+        "166": {
+          "groupId": 166,
+          "label": "Telecom"
+        },
+        "164": {
+          "groupId": 164,
           "label": "TP numérique"
         }
       },
@@ -345,61 +380,5 @@
       "CodPro": "DAT"
     },
     "active": "ACT"
-  },
-  "vehicule": {
-    "resourceType": {
-      "id": "3",
-      "code": "3"
-    },
-    "plateNumber": {
-      "CodPro": "107",
-      "ValPro": "getValueDirectly",
-      "valueType": "string",
-      "requiredForImport": "false"
-    },
-    "description": {
-      "CodPro": "DES",
-      "ValPro": "getValueDirectly",
-      "valueType": "string",
-      "requiredForImport": "false"
-    },
-    "photo": {
-      "CodPro": "81",
-      "ValPro": "getValueDirectly",
-      "valueType": "string",
-      "requiredForImport": "false"
-    },
-    "delegate": {
-      "CodPro": "89",
-      "ValPro": "getValueDirectly",
-      "valueType": "string",
-      "requiredForImport": "false"
-    }
-  },
-  "video": {
-    "resourceType": {
-      "id": "11",
-      "code": "11"
-    },
-    "roomId": {
-      "CodPro": "124",
-      "ValPro": "getValueDirectly",
-      "valueType": "string",
-      "requiredForImport": "false"
-    },
-    "roomNumber": {
-      "CodPro": "125",
-      "ValPro": "getValueDirectly",
-      "valueType": "string",
-      "requiredForImport": "true"
-    },
-    "terminal": {
-      "CodPro": "126",
-      "ValPro": {
-        "146": "Cisco MX700",
-        "147": "Cisco SX80",
-        "148": "Cisco SX80 avec iPad"
-      }
-    }
   }
 }

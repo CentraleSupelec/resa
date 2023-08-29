@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import querystring from 'querystring';
 // src
-import config from 'config';
+import config from '../../config';
 import { fetchJWT } from 'actions/user';
 import LoadSpinner from 'components/partials/LoadSpinner';
 

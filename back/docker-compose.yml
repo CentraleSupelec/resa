@@ -16,5 +16,3 @@ services:
     ports:
       - ${MAILHOG_PORT_SMTP:-1025}:1025
       - ${MAILHOG_PORT_HTTP:-8025}:8025
-volumes:
-  build:

@@ -1,7 +1,15 @@
 // lib
 import querystring from 'querystring';
 // src
-import configBase from './config';
+
+let configBase;
+
+try {
+  configBase = require('./config-local').default;
+} catch (e) {
+  configBase = require('./config').default;
+}
+
 const UPSACLAY_CAS_REGEX = /^resa-upsaclay/;
 const chooseHostContext = (config) => {
   if (UPSACLAY_CAS_REGEX.test(window.location.hostname)) {

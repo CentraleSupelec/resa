@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // src
-import config from 'config';
+import config from '../../../config';
 import LoadSpinner from 'components/partials/LoadSpinner';
 import Choices from './Choices';
 import Error from './Error';
@@ -31,9 +31,10 @@ class AcceptRequest extends Component {
     super(props);
 
     const { match } = this.props;
-    this.route = match.params && match.params.token
-      ? `${config.back.url}/confirm/${match.params.token}`
-      : null;
+    this.route =
+      match.params && match.params.token
+        ? `${config.back.url}/confirm/${match.params.token}`
+        : null;
 
     this.time = 0;
   }
@@ -49,7 +50,9 @@ class AcceptRequest extends Component {
         }
         this.setState({ booking, error: null, loading: false });
       })
-      .catch((error) => this.setState({ error, booking: null, loading: false }));
+      .catch((error) =>
+        this.setState({ error, booking: null, loading: false }),
+      );
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -102,10 +105,10 @@ class AcceptRequest extends Component {
       isCancelled,
     } = this.state;
     if (
-      !this.route
-      || error
-      || sendError
-      || (booking && booking.responseDate)
+      !this.route ||
+      error ||
+      sendError ||
+      (booking && booking.responseDate)
     ) {
       return <Error onValidation={sendError} booking={booking} />;
     }
