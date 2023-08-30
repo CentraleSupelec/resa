@@ -4,6 +4,7 @@ const { promisify } = require("util");
 const _ = require("lodash");
 const kleur = require("kleur");
 // src
+const { CAMPUS_SACLAY } = require("../config/constants");
 const config = require("./translatorConfig").room;
 const wsEventStapler = require("./eventStapler");
 const roomParser = require("./utils/roomParser");
@@ -130,7 +131,13 @@ async function getAvailableRooms(
   To convert a date object to an ISO 8601 string, use : date.toISOString()
   */
 
+  const oStartDate = new Date(startDate);
+  const oEndDate = new Date(endDate);
+  const diffInMilliseconds = oEndDate - oStartDate;
+  const diffInHours = diffInMilliseconds / (1000 * 60 * 60); // Conversion en heures
+
   const rooms = await getAllRooms(agendaClient, guid);
+
   const availableIds = await getAvailableRoomIds(
     agendaClient,
     guid,
@@ -149,6 +156,10 @@ async function getAvailableRooms(
       (room) =>
         room.allowBookings ||
         (!room.allowBookings && room.belongsTo.length > 0),
+    )
+    .filter(
+      (room) =>
+        (diffInHours > 2 && room.campus !== CAMPUS_SACLAY) || diffInHours <= 2,
     )
     .map((room) => ({
       ...room,
