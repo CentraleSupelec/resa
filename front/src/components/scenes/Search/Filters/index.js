@@ -1,14 +1,14 @@
 // lib
-import React from 'react';
-import PropTypes from 'prop-types';
-import throttle from 'lodash/throttle';
+import React from "react";
+import PropTypes from "prop-types";
+import throttle from "lodash/throttle";
 // src
-import { CAMPUSES } from 'config';
-import Checkbox from 'components/partials/Checkbox';
-import roomTypes from 'reducers/search/roomTypes.data';
-import SearchBar from './SearchBar';
-import TypeSelector from './TypeSelector';
-import CapacitySelector from './CapacitySelector';
+import { CAMPUSES, BUILDINGS } from "config";
+import Checkbox from "components/partials/Checkbox";
+import roomTypes from "reducers/search/roomTypes.data";
+import SearchBar from "./SearchBar";
+import TypeSelector from "./TypeSelector";
+import CapacitySelector from "./CapacitySelector";
 
 class Filters extends React.Component {
   static propTypes = {
@@ -23,11 +23,13 @@ class Filters extends React.Component {
     toggleDisplayUnavailableRooms: PropTypes.func.isRequired,
     toggleDisplayOpenSpaces: PropTypes.func.isRequired,
     toggleDisplayCampusAmong: PropTypes.func.isRequired,
+    toggleDisplayBuildingAmong: PropTypes.func.isRequired,
     displayVideoAcquisitionRooms: PropTypes.bool.isRequired,
     displayVideoConferenceRooms: PropTypes.bool.isRequired,
     displayUnavailableRooms: PropTypes.bool.isRequired,
     displayOpenSpaces: PropTypes.bool.isRequired,
     displayCampuses: PropTypes.array.isRequired,
+    displayBuildings: PropTypes.array.isRequired,
   };
 
   // As the minCapacity and searchText values aren't set
@@ -65,11 +67,13 @@ class Filters extends React.Component {
       toggleDisplayUnavailableRooms,
       toggleDisplayOpenSpaces,
       toggleDisplayCampusAmong,
+      toggleDisplayBuildingAmong,
       displayVideoAcquisitionRooms,
       displayVideoConferenceRooms,
       displayUnavailableRooms,
       displayOpenSpaces,
       displayCampuses,
+      displayBuildings,
     } = this.props;
     return (
       <div className="sticky-top custom-sticky">
@@ -96,6 +100,15 @@ class Filters extends React.Component {
                 onChange={() => toggleDisplayCampusAmong(c)}
                 checked={displayCampuses.includes(c)}
                 name={c}
+              />
+            ))}
+            <div>Bâtiments :</div>
+            {BUILDINGS.map((b) => (
+              <Checkbox
+                key={b}
+                onChange={() => toggleDisplayBuildingAmong(b)}
+                checked={displayBuildings.includes(b)}
+                name={b}
               />
             ))}
             <div className="mt-1">Filtres :</div>

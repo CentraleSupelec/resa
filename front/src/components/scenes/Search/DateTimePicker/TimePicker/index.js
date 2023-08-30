@@ -106,9 +106,13 @@ export default class TimePicker extends React.PureComponent {
                   {!directLinkRoomName && (
                     <button
                       type="button"
-                      className="btn btn-success custom-btn-cs"
+                      className={
+                        incoherentTimes
+                          ? "btn btn-danger custom-btn-cs"
+                          : "btn btn-success custom-btn-cs"
+                      }
                       onClick={toggle}
-                      disabled={incoherentTimes || tooLongTimes}
+                      disabled={incoherentTimes}
                     >
                       Voir les salles disponibles
                     </button>
@@ -120,22 +124,31 @@ export default class TimePicker extends React.PureComponent {
                       onClick={openDirectBookingWindow}
                       data-toggle="modal"
                       data-target="#roomBookModal"
-                      disabled={incoherentTimes || tooLongTimes}
+                      disabled={incoherentTimes}
                     >
                       Voir la disponibilité
                     </button>
                   )}
                 </div>
                 {incoherentTimes && (
-                  <div className="row justify-content-center mt-3">
-                    <p>
+                  <div className="row justify-content-center mt-3 alert alert-warning p-1">
+                    <p className="mb-0">
                       L'heure de début doit être antérieure à l'heure de fin.
                     </p>
                   </div>
                 )}
                 {tooLongTimes && (
-                  <div className="row justify-content-center mt-3">
-                    <p>La plage horaire demandée ne peut excéder 2 heures.</p>
+                  <div className="row justify-content-center mt-3 alert alert-warning p-1">
+                    <p>
+                      La liste des salles proposées s'adapte aux contraintes
+                      (créneau max de 2h pour Paris Saclay).
+                    </p>
+                    <p className="mb-0">
+                      Pour une durée plus importante, contactez{" "}
+                      <a href="mailto:support.dpiet@centralesupelec.fr">
+                        support.dpiet@centralesupelec.fr
+                      </a>
+                    </p>
                   </div>
                 )}
               </div>

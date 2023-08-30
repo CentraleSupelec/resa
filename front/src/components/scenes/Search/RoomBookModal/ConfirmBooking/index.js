@@ -1,5 +1,5 @@
 // lib
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import OptionalImage from "react-image";
 // src
@@ -25,6 +25,23 @@ const ConfirmBooking = ({
   attemptedConfirm,
   detectEnter,
 }) => {
+  const [tooLongTimes, setTooLongTimes] = useState(false);
+
+  const checkTimeCoherence = useCallback(() => {
+    const diffTime = endTime - startTime;
+
+    setTooLongTimes(false);
+
+    if (diffTime / 3600000 > 2) {
+      setTooLongTimes(true);
+    }
+  }, [endTime, startTime]);
+
+  useEffect(() => {
+    // Appel de la méthode checkTimeCoherence lors du montage du composant
+    checkTimeCoherence();
+  }, [checkTimeCoherence]);
+
   const body = [
     <OptionalImage
       src={`${config.imagesBaseURL}${room.id}.${imageExtension}`}
@@ -79,9 +96,15 @@ const ConfirmBooking = ({
           <span className="d-none d-sm-inline"> la réservation</span>
         </span>
       }
-      confirmButtonFunction={confirmBooking}
-      showConfirmButton={room.available}
-      cancelActionText={room.available ? "Annuler" : "OK"}
+      confirmButtonFunction={!tooLongTimes ? confirmBooking : null}
+      showConfirmButton={room.available && !tooLongTimes}
+      cancelActionText={
+        tooLongTimes
+          ? "Le créneau demandé est de 2h max pour Paris Saclay"
+          : room.available
+          ? "Annuler"
+          : "OK"
+      }
     />
   );
 };

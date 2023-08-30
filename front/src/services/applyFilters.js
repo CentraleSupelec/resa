@@ -1,13 +1,13 @@
 // lib
-import Fuse from 'fuse.js';
+import Fuse from "fuse.js";
 
 function filterRoom(filters, room) {
   // "return false" means that this room will be removed from the list
 
   // Ignore choosen type is search for a room
   if (!filters.searchText && !room.isFavoriteRoom) {
-    if (filters.type.value === 'Salle de visioconférence') {
-      if (room.type !== 'Salle de réunion' || !room.videoConference) {
+    if (filters.type.value === "Salle de visioconférence") {
+      if (room.type !== "Salle de réunion" || !room.videoConference) {
         return false;
       }
     } else if (Array.isArray(filters.type.value)) {
@@ -48,6 +48,11 @@ function filterRoom(filters, room) {
     if (!displayCampuses.includes(room.campus)) return false;
   }
 
+  const { displayBuildings } = filters;
+  if (Array.isArray(displayBuildings) && displayBuildings.length > 0) {
+    if (!displayBuildings.includes(room.building)) return false;
+  }
+
   return true;
 }
 
@@ -71,7 +76,7 @@ export default (roomList, filters, isFavoriteRoom = false) => {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ['name', 'type', 'donator', 'building', 'campus', 'wing'],
+      keys: ["name", "type", "donator", "building", "campus", "wing"],
     };
     return new Fuse(rooms, searchOptions).search(filters.searchText);
   }

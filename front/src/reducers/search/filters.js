@@ -6,11 +6,12 @@ import {
   TOGGLE_DISPLAY_UNAVAILABLE_ROOMS,
   TOGGLE_DISPLAY_OPEN_SPACES,
   TOGGLE_DISPLAY_CAMPUS_AMONG,
+  TOGGLE_DISPLAY_BUILDING_AMONG,
   SELECT_ROOM_TYPE,
   SET_SEARCH_TEXT,
-} from 'actions/rooms/filters/types';
+} from "actions/rooms/filters/types";
 
-import { defaultValue } from './roomTypes.data';
+import { defaultValue } from "./roomTypes.data";
 
 export default function filters(
   state = {
@@ -20,8 +21,9 @@ export default function filters(
     displayUnavailableRooms: false,
     displayOpenSpaces: false,
     displayCampuses: [],
+    displayBuildings: [],
     type: defaultValue,
-    searchText: '',
+    searchText: "",
   },
   action,
 ) {
@@ -59,6 +61,16 @@ export default function filters(
       return {
         ...state,
         displayCampuses: newDisplayCampuses,
+      };
+    }
+    case TOGGLE_DISPLAY_BUILDING_AMONG: {
+      const building = action.payload;
+      const newDisplayBuildings = state.displayBuildings.includes(building)
+        ? state.displayBuildings.filter((b) => b !== building)
+        : [...state.displayBuildings, building];
+      return {
+        ...state,
+        displayBuildings: newDisplayBuildings,
       };
     }
     case SELECT_ROOM_TYPE:
