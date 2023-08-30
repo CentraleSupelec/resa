@@ -6,11 +6,7 @@ variables:
 stages:
   - test
   - lint
-  - version
   - build
-
-include:
-  - template: "Code-Quality.gitlab-ci.yml"
 
 # Install dependencies
 
@@ -22,7 +18,7 @@ include:
   script:
     - cd ${DIRECTORY}
     - npm i eslint
-    - node_modules/eslint/bin/eslint.js 
+    - node_modules/eslint/bin/eslint.js
 
 lint_back:
   extends: .lint
@@ -34,103 +30,62 @@ lint_front:
   variables:
     DIRECTORY: front
 
-version:
-  image: ubuntu:latest
+.kaniko-build-template: &kaniko_build_definition
+  image:
+    name: gcr.io/kaniko-project/executor:v1.15.0-debug
+    entrypoint: [""]
   tags:
     - docker
-  stage: version
-  needs:
-    - lint_front
-    - lint_back
-  script:
-    - apt-get update
-    - apt-get install -y python3
-    - apt-get install -y python3-pip
-    - apt-get install -y git
-    - git fetch
-    - git checkout $CI_COMMIT_BRANCH
-    - git pull
-    - python3 -m pip install semver
-    - python3 update_version.py
-    - git diff --quiet --exit-code || {
-      git config --global user.name "${BOT_NAME}";
-      git config --global user.email "${BOT_EMAIL}";
-      git add version.txt;
-      git commit -m "${COMMIT_MESSAGE}";
-      git push -o ci.skip "https://whatever:${GIT_PUSH_TOKEN}@${CI_REPOSITORY_URL#*@}" $CI_COMMIT_BRANCH;}
-  artifacts:
-    paths:
-      - version.txt
-  only:
-    - prod
-
-
-build_front:
-  stage: build
-  variables:
-    container: docker #https://github.com/GoogleContainerTools/kaniko/issues/1542
-  image:
-    name: gcr.io/kaniko-project/executor:v1.8.1-debug
-    entrypoint: [""]
+  cache: {}
   before_script:
-    # Login to registry
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"$REGISTRY_HOSTNAME\":{\"username\":\"$REGISTRY_USERNAME\",\"password\":\"$REGISTRY_PASSWORD\"},\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
   script:
-    - export IMAGE_TAG=$(cat version.txt)
-    - echo $IMAGE_TAG
     - >
       /kaniko/executor \
         --context $CI_PROJECT_DIR/front \
-        --dockerfile ${CI_PROJECT_DIR}/front/dockerfile \
-        --build-arg REACT_APP_CAS_LOGIN_URL="https://cas.centralesupelec.fr/cas/login" \
-        --build-arg REACT_APP_CAS_LOGOUT_URL="https://cas.centralesupelec.fr/cas/logout" \
-        --build-arg REACT_APP_CAS_LOGIN_SERVICE="https://resa.k8s-cloud.centralesupelec.fr/loginAccept/" \
-        --build-arg REACT_APP_CAS_LOGOUT_SERVICE="https://resa.k8s-cloud.centralesupelec.fr/" \
-        --build-arg REACT_APP_ALT_CAS_LOGIN_URL="https://sso.universite-paris-saclay.fr/cas/login" \
-        --build-arg REACT_APP_ALT_CAS_LOGOUT_URL="https://sso.universite-paris-saclay.fr/cas/logout" \
-        --build-arg REACT_APP_ALT_CAS_LOGIN_SERVICE="https://resa-upsaclay.k8s-cloud.centralesupelec.fr/loginAccept/" \
-        --build-arg REACT_APP_ALT_CAS_LOGOUT_SERVICE="https://resa-upsaclay.k8s-cloud.centralesupelec.fr/" \
-        --build-arg REACT_APP_BACK_URL="https://resa.k8s-cloud.centralesupelec.fr/api" \
-        --build-arg REACT_APP_ALT_BACK__URL="https://resa-upsaclay.k8s-cloud.centralesupelec.fr/api" \
+        --dockerfile ${CI_PROJECT_DIR}/front/Dockerfile \
+        --build-arg REACT_APP_CAS_LOGIN_URL="https://${CS_CAS_HOSTNAME}/cas/login" \
+        --build-arg REACT_APP_CAS_LOGOUT_URL="https://${CS_CAS_HOSTNAME}/cas/logout" \
+        --build-arg REACT_APP_CAS_LOGIN_SERVICE="/loginAccept/" \
+        --build-arg REACT_APP_CAS_LOGOUT_SERVICE="/" \
+        --build-arg REACT_APP_ALT_CAS_LOGIN_URL="https://${UPSACLAY_CAS_HOSTNAME}/cas/login" \
+        --build-arg REACT_APP_ALT_CAS_LOGOUT_URL="https://${UPSACLAY_CAS_HOSTNAME}/cas/logout" \
+        --build-arg REACT_APP_ALT_CAS_LOGIN_SERVICE="/loginAccept/" \
+        --build-arg REACT_APP_ALT_CAS_LOGOUT_SERVICE="/" \
+        --build-arg REACT_APP_BACK_URL="/api" \
+        --build-arg REACT_APP_ALT_BACK_URL="/api" \
         --push-retry 4 \
-        --destination ${REGISTRY_HOSTNAME}/resa/front:$IMAGE_TAG \
+        --destination ${REGISTRY_HOSTNAME}/resa/front:${IMAGE_VERSION} \
         --cache \
+        --cache-repo ${CI_REGISTRY}/resa/github/front-cache \
         --snapshotMode=redo \
-        --use-new-run=true
-  tags:
-    - docker
-  environment:
-    name: prod
-  only:
-    - prod
-
-build_back:
-  stage: build
-  variables:
-    container: docker #https://github.com/GoogleContainerTools/kaniko/issues/1542
-  image:
-    name: gcr.io/kaniko-project/executor:v1.8.1-debug
-    entrypoint: [""]
-  before_script:
-    # Login to registry
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"$REGISTRY_HOSTNAME\":{\"username\":\"$REGISTRY_USERNAME\",\"password\":\"$REGISTRY_PASSWORD\"},\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-  script:
-    - export IMAGE_TAG=$(cat version.txt)
-    - echo $IMAGE_TAG
+        --use-new-run=true \
+        --cleanup
     - >
       /kaniko/executor \
         --context $CI_PROJECT_DIR/back \
-        --dockerfile ${CI_PROJECT_DIR}/back/dockerfile \
+        --dockerfile ${CI_PROJECT_DIR}/back/Dockerfile \
         --push-retry 4 \
-        --destination ${REGISTRY_HOSTNAME}/resa/back:$IMAGE_TAG \
+        --destination ${REGISTRY_HOSTNAME}/resa/back:${IMAGE_VERSION} \
         --cache \
+        --cache-repo ${CI_REGISTRY}/resa/github/back-cache \
         --snapshotMode=redo \
-        --use-new-run=true
-  tags:
-    - docker
-  environment:
-    name: prod
+        --use-new-run=true \
+        --cleanup
+
+build-latest:
+  stage: build
+  <<: *kaniko_build_definition
+  variables:
+    IMAGE_VERSION: "latest"
   only:
-    - prod
+    - main
+
+build-tag:
+  stage: build
+  <<: *kaniko_build_definition
+  variables:
+    IMAGE_VERSION: "${CI_COMMIT_TAG}"
+  only:
+    - tags
