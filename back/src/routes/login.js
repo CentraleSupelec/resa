@@ -70,7 +70,7 @@ router.get("/:token", requireAnnuaire, async (
         lastName: attributes.sn[0],
         email: attributes.mail[0],
         geodeEmail: attributes.mail[0],
-        id: config.parisSaclayGeodeId,
+        id: config.altGeodeId,
       };
     } else {
       // fallback
