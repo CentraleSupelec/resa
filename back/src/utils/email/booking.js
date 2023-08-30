@@ -167,7 +167,8 @@ async function sendRequest(ownUrl, booking, room, author) {
   try {
     // SUBJECT
     const subject = `Demande de réservation en ${room.name} par ${author.firstName} ${author.lastName}.`;
-
+    const subjectWithMailTo = `Demande de réservation en ${room.name} par <a href="mailto:${author.email}">${author.firstName} ${author.lastName}.</a>`;
+    
     // BODY
     const managerEmails = await getManagersEmailOfRoom(room);
     const imageExists = await doesRoomImageExists(room.id);
@@ -178,6 +179,7 @@ async function sendRequest(ownUrl, booking, room, author) {
       room,
       author,
       subject,
+      subjectWithMailTo,
       link,
       managerEmails,
       imageExists,

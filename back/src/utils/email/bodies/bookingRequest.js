@@ -10,6 +10,7 @@ function getHTMLBody(
   room,
   author,
   subject,
+  subjectWithMailTo,
   link,
   managerEmails,
   imageExists,
@@ -17,7 +18,7 @@ function getHTMLBody(
   const data = {
     previewText: `${subject}.`,
     textBeforeButton: `
-<h4>${subject}</h4>
+<h4>${subjectWithMailTo}</h4>
 <center>
 <b>${booking.eventName}</b><br>
 ${moment(booking.startDate)
