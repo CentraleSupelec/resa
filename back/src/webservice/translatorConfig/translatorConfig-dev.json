@@ -7,7 +7,8 @@
     "treeLocation": {
       "92": "Saclay",
       "94": "Metz",
-      "107": "Rennes"
+      "107": "Rennes",
+      "1025": "Lumen"
     },
     "campus": {
       "CodPro": "SIT",
@@ -231,6 +232,10 @@
         "194": {
           "groupId": 194,
           "label": "Hub IA"
+        },
+        "204": {
+          "groupId": 204,
+          "label": "Lumen"
         }
       },
       "valueType": "array"
