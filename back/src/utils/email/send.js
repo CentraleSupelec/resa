@@ -14,7 +14,7 @@ module.exports = function send(
   // Set SMTP parameters
   const smtpConfig = config.smtp;
   const transporter = nodemailer.createTransport(smtpConfig);
-  const SENDER = config.sender_email;
+  const SENDER = config.senderEmail;
 
   // Setup e-mail data
   // doc: https://nodemailer.com/message/

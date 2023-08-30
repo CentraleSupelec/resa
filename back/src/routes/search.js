@@ -83,6 +83,7 @@ router.get(
           !req.permission.onlyRoomIds.includes(roomId))
       ) {
         res.sendStatus(403);
+        return;
       }
 
       const room /* : Room_Events__Author */ = await wsSearch.getRoomDetailWithEvents(

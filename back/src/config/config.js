@@ -33,7 +33,9 @@ module.exports = {
   smtp: {
     host: secrets.smtp.host,
     port: secrets.smtp.port,
+    auth: secrets.smtp.auth ? secrets.smtp.auth : undefined,
   },
+  senderEmail: secrets.senderEmail,
   adminEmail: secrets.adminEmail,
   ccEmail: secrets.ccEmail,
   server: {},
