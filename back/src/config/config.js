@@ -7,13 +7,13 @@ module.exports = {
     rscUrl: secrets.defaultCas.rscUrl,
     service: secrets.defaultCas.service,
   },
-  // ParisSaclay settings
-  altOwnUrl: secrets.parisSaclayOwnUrl,
+  // Alt settings
+  altOwnUrl: secrets.altOwnUrl,
   altCas: {
-    rscUrl: secrets.parisSaclayCas.rscUrl,
-    service: secrets.parisSaclayCas.service,
+    rscUrl: secrets.altCas.rscUrl,
+    service: secrets.altCas.service,
   },
-  parisSaclayGeodeId: secrets.parisSaclayGeodeId,
+  altGeodeId: secrets.altGeodeId,
   webservice: {
     sessionurl: secrets.webservice.sessionurl,
     agendaurl: secrets.webservice.agendaurl,

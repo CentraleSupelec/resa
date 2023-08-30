@@ -66,74 +66,50 @@ You may now close the connection to the mongo shell.
 
 ### Configuring
 
-Create `src/config/secrets.js`:
-
-```js
-// eslint-disable-next-line
-const secrets = require("./secrets");
-
-module.exports = {
-  defaultOwnUrl: "<resa-base-url>",
-  defaultCas: {
-    rscUrl: "https://<your-cas-url>/cas/p3/serviceValidate",
-    service: "https://<resa-base-url>/loginAccept/",
-  },
-  webservice: {
-    // All of these settings should end in .asmx?wsdl
-    sessionurl: "<openportal-session-url>",
-    agendaurl: "<openportal-agenda-url>",
-    annuaireurl: "<openportal-annuaire-url>",
-    user: "u.<openportal-user>",
-    password: "<openportal-password>",
-  },
-  geodeDSClient: secrets.prod.geodeDSClient,
-  geodeDSRoot: "https://geode-ds.centralesupelec.fr",
-  jwt: {
-    secret: secrets.prod.jwtSecret,
-  },
-  cypher: {
-    salt: secrets.prod.cypherSalt,
-    tokenSecret: secrets.prod.tokenSalt,
-  },
-  smtp: {
-    // SMTP server used for sending confirmation email after a reservation
-    host: "",
-    port: "",
-  },
-  sender_email: '"<Email name>" <email@email.com>',
-  adminEmail: "",
-  ccEmail: "",
-  server: {},
-  public: {},
-  db: secrets.prod.db,
-};
-```
-
 Create `src/config/secrets.json`:
 
 ```json
 {
-  "dev": {
-    "geodeDSClient": {
-      "id": "<id geodeDSClient (in gitlab's CI/CD secret tokens)>",
-      "secret": "<secret geodeDSClient (in gitlab's CI/CD secret tokens)>"
-    },
-    "db": {
-      "host": "localhost",
-      "name": "resa",
-      "username": "<mongo username>",
-      "password": "<mongo password>"
-    },
-    "geodeUser": {
-      "id": "<your openportal id>",
-      "firstName": "<your openportal first name>",
-      "lastName": "<your openportal last name>",
-      "email": "<your openportal email>"
-    },
-    "webservicePassword": "<password for openportal (in gitlab's CI/CD secret tokens)>",
-    "jwtSecret": "<random string to hash jwts>",
-    "cypherSalt": "<random string to cypher token for room reservation for delegates>",
-    "tokenSalt": "<random string to generate random strings for token>"
+  "defaultOwnUrl": "<resa-base-url>",
+  "defaultCas": {
+    "rscUrl": "<your-cas-url>/cas/p3/serviceValidate",
+    "service": "<resa-base-url>/loginAccept/"
+  },
+  "altOwnUrl": "<alt-base-url>",
+  "altCas": {
+    "rscUrl": "<alt-cas-url>/cas/p3/serviceValidate",
+    "service": "<alt-base-url>/loginAccept/"
+  },
+  "webservice": {
+    "sessionurl": "<openportal-session-url>",
+    "agendaurl": "<openportal-agenda-url>",
+    "annuaireurl": "<openportal-annuaire-url>",
+    "user": "u.<openportal-user>",
+    "password": "<openportal-password>"
+  },
+  "geodeDSClient": {
+    "id": "<id geodeDSClient",
+    "secret": "<secret geodeDSClient"
+  },
+  "geodeDSRoot": "<geode-base-url>",
+  "jwtSecret": "<random string to hash jwts>",
+  "cypher": {
+    "salt": "<random string to cypher token for room reservation for delegates>",
+    "tokenSecret": "<random string to generate random strings for token>"
+  },
+  "smtp": {
+    "host": "<smtp-url>",
+    "port": "<smtp-port>"
+  },
+  "adminEmail": "<admin-mail>",
+  "ccEmail": "<cc-mail>",
+  "server": {},
+  "public": {},
+  "db": {
+    "host": "localhost",
+    "name": "resa",
+    "username": "resa",
+    "password": "resa"
   }
 }
 ```
@@ -152,6 +128,8 @@ Depending of the settings of your CAS server, you may have to add a DNS redirect
 
 `127.0.0.1 localhost.<domain-your-cas-accept>`
 
+And replace <resa-base-url> in your secrets.json by >`http://localhost.<domain-your-cas-accept>`
+
 ## Launch
 
 Ensure the mongo service is running:
@@ -166,6 +144,12 @@ $ mongod
 
 ```console
 $ yarn mongo-docker-start
+```
+
+- if using docker-compose:
+
+```console
+$ docker-compose up -d
 ```
 
 Launch the app (see port default setting in `bin/www` file):
