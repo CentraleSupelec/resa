@@ -54,7 +54,7 @@ As well as many other projects you can find in `front/package.json` and `back/pa
 
 ## License
 
-This project is open-source under the [GNU GPLv3 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
+This project is open-source under the [MIT license](LICENSE.md).
 
 ## Documentation
 
