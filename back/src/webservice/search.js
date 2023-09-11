@@ -4,7 +4,6 @@ const { promisify } = require("util");
 const _ = require("lodash");
 const kleur = require("kleur");
 // src
-const { CAMPUS_SACLAY } = require("../config/constants");
 const config = require("./translatorConfig").room;
 const wsEventStapler = require("./eventStapler");
 const roomParser = require("./utils/roomParser");
@@ -156,10 +155,6 @@ async function getAvailableRooms(
       (room) =>
         room.allowBookings ||
         (!room.allowBookings && room.belongsTo.length > 0),
-    )
-    .filter(
-      (room) =>
-        (diffInHours > 2 && room.campus !== CAMPUS_SACLAY) || diffInHours <= 2,
     )
     .map((room) => ({
       ...room,

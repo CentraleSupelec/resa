@@ -12,6 +12,14 @@ const roomTypes = [
     fullName: 'TP numériques',
   },
   {
+    value: 'TP Automatisme',
+    fullName: 'TP Automatisme',
+  },
+  {
+    value: 'TP Electronique',
+    fullName: 'TP Electronique',
+  },
+  {
     value: 'Plateau projet',
     fullName: 'Espaces projets',
   },

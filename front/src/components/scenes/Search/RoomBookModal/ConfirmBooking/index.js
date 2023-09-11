@@ -1,16 +1,18 @@
 // lib
-import React, { useState, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
-import OptionalImage from "react-image";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import OptionalImage from 'react-image';
 // src
-import config from "config";
-import ConfirmModal from "components/partials/Modals/ConfirmModal";
-import EventList from "components/partials/EventList";
-import BookingSummary from "components/partials/BookingSummary";
-import EventNameInput from "./EventNameInput";
-import VideoProviderInput from "./VideoProviderInput";
+import config from 'config';
+import ConfirmModal from 'components/partials/Modals/ConfirmModal';
+import EventList from 'components/partials/EventList';
+import BookingSummary from 'components/partials/BookingSummary';
+import EventNameInput from './EventNameInput';
+import VideoProviderInput from './VideoProviderInput';
 
-const imageExtension = "jpg";
+const { CAMPUS_SACLAY } = require('../../../../../config/index');
+
+const imageExtension = 'jpg';
 
 const ConfirmBooking = ({
   room,
@@ -27,15 +29,15 @@ const ConfirmBooking = ({
 }) => {
   const [tooLongTimes, setTooLongTimes] = useState(false);
 
-  const checkTimeCoherence = useCallback(() => {
-    const diffTime = endTime - startTime;
-
+  const checkTimeCoherence = () => {
     setTooLongTimes(false);
-
-    if (diffTime / 3600000 > 2) {
-      setTooLongTimes(true);
+    if (room.campus === CAMPUS_SACLAY) {
+      const diffTime = endTime - startTime;
+      if (diffTime / 3600000 > 2) {
+        setTooLongTimes(true);
+      }
     }
-  }, [endTime, startTime]);
+  };
 
   useEffect(() => {
     // Appel de la méthode checkTimeCoherence lors du montage du composant
@@ -67,6 +69,14 @@ const ConfirmBooking = ({
         ATTENTION, cette salle sera décloisonnée
       </div>
     ) : null,
+    tooLongTimes === true ? (
+      <div className="alert alert-danger" role="alert">
+        Pour un créneau supérieur à 2h, contacter{' '}
+        <a href="mailto:support.dpiet@centralesupelec.fr">
+          support.dpiet@centralesupelec.fr
+        </a>
+      </div>
+    ) : null,
     <EventNameInput
       available={room.available}
       eventName={eventName}
@@ -87,25 +97,21 @@ const ConfirmBooking = ({
   ];
 
   return (
-    <ConfirmModal
-      title={`Réservation de ${room.name}`}
-      body={body}
-      confirmButtonText={
-        <span>
-          Confirmer
-          <span className="d-none d-sm-inline"> la réservation</span>
-        </span>
-      }
-      confirmButtonFunction={!tooLongTimes ? confirmBooking : null}
-      showConfirmButton={room.available && !tooLongTimes}
-      cancelActionText={
-        tooLongTimes
-          ? "Le créneau demandé est de 2h max pour Paris Saclay"
-          : room.available
-          ? "Annuler"
-          : "OK"
-      }
-    />
+    <>
+      <ConfirmModal
+        title={`Réservation de ${room.name}`}
+        body={body}
+        confirmButtonText={
+          <span>
+            Confirmer
+            <span className="d-none d-sm-inline"> la réservation</span>
+          </span>
+        }
+        confirmButtonFunction={confirmBooking}
+        showConfirmButton={room.available && !tooLongTimes}
+        cancelActionText={room.available ? 'Annuler' : 'OK'}
+      />
+    </>
   );
 };
 

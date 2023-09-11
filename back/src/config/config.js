@@ -27,8 +27,8 @@ module.exports = {
     secret: secrets.jwtSecret,
   },
   cypher: {
-    salt: secrets.cypherSalt,
-    tokenSecret: secrets.tokenSalt,
+    salt: secrets.cypher.salt,
+    tokenSecret: secrets.cypher.tokenSecret,
   },
   smtp: {
     host: secrets.smtp.host,

@@ -1,14 +1,14 @@
 // lib
-import React from "react";
-import PropTypes from "prop-types";
-import throttle from "lodash/throttle";
+import React from 'react';
+import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 // src
-import { CAMPUSES, BUILDINGS } from "config";
-import Checkbox from "components/partials/Checkbox";
-import roomTypes from "reducers/search/roomTypes.data";
-import SearchBar from "./SearchBar";
-import TypeSelector from "./TypeSelector";
-import CapacitySelector from "./CapacitySelector";
+import { CAMPUSES, BUILDINGS } from 'config';
+import Checkbox from 'components/partials/Checkbox';
+import roomTypes from 'reducers/search/roomTypes.data';
+import SearchBar from './SearchBar';
+import TypeSelector from './TypeSelector';
+import CapacitySelector from './CapacitySelector';
 
 class Filters extends React.Component {
   static propTypes = {
@@ -102,7 +102,6 @@ class Filters extends React.Component {
                 name={c}
               />
             ))}
-            <div>Bâtiments :</div>
             {BUILDINGS.map((b) => (
               <Checkbox
                 key={b}

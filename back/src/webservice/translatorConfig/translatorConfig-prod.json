@@ -72,6 +72,9 @@
       "CodPro": "45",
       "ValPro": {
         "102": "TP numérique",
+        "199": "TP Automatisme",
+        "205": "TP Electronique",
+        "198": "Bureau",
         "27": "Amphithéâtre",
         "28": "Auditorium",
         "100": "Enseignement",
