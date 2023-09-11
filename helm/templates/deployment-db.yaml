@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resa-db
+spec:
+  selector:
+    matchLabels:
+      app: resa
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: resa
+    spec:
+      containers:
+        - name: database
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - mountPath: "/data/db"
+              name: resa-db
+      volumes:
+        - name: resa-db
+          persistentVolumeClaim:
+            claimName: resa-db

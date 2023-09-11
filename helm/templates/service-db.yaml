@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resa-db
+spec:
+  selector:
+    app: resa
+  ports:
+    - protocol: TCP
+      port: 27017

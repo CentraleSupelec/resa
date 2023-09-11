@@ -1,0 +1,30 @@
+{{ if .Values.hpa.back.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: resa-back-autoscaling
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v2
+    kind: Deployment
+    name: resa-back
+  minReplicas: {{ .Values.hpa.back.replicamin }}
+  maxReplicas: {{ .Values.hpa.back.replicamax }}
+  metrics:
+    {{ if .Values.hpa.back.cpu }}
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.hpa.back.cpu }}
+    {{ end }}
+    {{ if .Values.hpa.back.memory }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.hpa.back.memory }}
+    {{ end }}
+{{ end }}

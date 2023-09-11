@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.containersFront.name }}
+spec:
+  selector:
+    matchLabels:
+      app: resa-front
+  {{ if not .Values.hpa.front.enabled }}
+  replicas: {{ .Values.deployment.replicanb }}
+  {{ end }}
+  template:
+    metadata:
+      labels:
+        app: resa-front
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.deployment.containersFront.imagePullSecret }}
+      containers:
+      - name: {{ .Values.deployment.containersFront.name }}
+        image: {{ .Values.deployment.containersFront.image }}
+        ports:
+        - containerPort: {{ .Values.deployment.containersFront.port }}

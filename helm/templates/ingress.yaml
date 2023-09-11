@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: resa-ingress
+  {{ with .Values.ingress.annotations }}
+  annotations:
+    {{ toYaml . | nindent 4 }}
+  {{ end }}
+    nginx.ingress.kubernetes.io/server-alias: "{{ .Values.ingress.altHost }}"
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+      - {{ .Values.ingress.host }}
+      - {{ .Values.ingress.altHost }}
+    secretName: {{ .Values.certificate.secret }}
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: resa-back-service
+            port:
+              number: 3001
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: resa-front-service
+            port:
+              number: {{ .Values.serviceFront.port }}
+ 
+
