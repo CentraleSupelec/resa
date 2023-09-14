@@ -33,10 +33,10 @@ function getHTMLBody(
 
   const openingStatement = isModification
     ? `Votre réservation en ${room.name} ${
-        room.modular && "(Salle décloisonnée)"
+        room.modular ? "(Salle décloisonnée)" : ""
       } a bien été modifiée.`
     : `Votre réservation en ${room.name} ${
-        room.modular && "(Salle décloisonnée)"
+        room.modular ? "(Salle décloisonnée)" : ""
       } est confirmée.`;
 
   // Format e-mail content
@@ -102,10 +102,10 @@ function getPlainBody(
 ) {
   const openingStatement = isModification
     ? `Votre réservation en ${room.name} ${
-        room.modular && "(Salle décloisonnée)"
+        room.modular ? "(Salle décloisonnée)" : ""
       } a bien été modifiée.`
     : `Votre réservation en ${room.name} ${
-        room.modular && "(Salle décloisonnée)"
+        room.modular ? "(Salle décloisonnée)" : ""
       } est confirmée.`;
 
   return `
