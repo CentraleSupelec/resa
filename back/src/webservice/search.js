@@ -130,11 +130,6 @@ async function getAvailableRooms(
   To convert a date object to an ISO 8601 string, use : date.toISOString()
   */
 
-  const oStartDate = new Date(startDate);
-  const oEndDate = new Date(endDate);
-  const diffInMilliseconds = oEndDate - oStartDate;
-  const diffInHours = diffInMilliseconds / (1000 * 60 * 60); // Conversion en heures
-
   const rooms = await getAllRooms(agendaClient, guid);
 
   const availableIds = await getAvailableRoomIds(
