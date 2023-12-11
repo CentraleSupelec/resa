@@ -27,6 +27,6 @@ const loginQuery = querystring.stringify({
 export const loginRequest = `${config.cas.loginUrl}?${loginQuery}`;
 export const CAMPUSES = ['Saclay', 'Metz', 'Rennes'];
 export const CAMPUS_SACLAY = 'Saclay';
-export const BUILDINGS = ['Falguière', 'Lumen'];
+export const BUILDINGS = ['Falguière', 'IBM'];
 
 export default config;

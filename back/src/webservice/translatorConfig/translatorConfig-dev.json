@@ -9,7 +9,8 @@
       "94": "Metz",
       "107": "Rennes",
       "1025": "Lumen",
-      "1080": "Falguière"
+      "1080": "Falguière",
+      "1156": "IBM"
     },
     "campus": {
       "CodPro": "SIT",
@@ -29,7 +30,8 @@
         "150": "Enseignement (Rennes)",
         "176": "Enseignement (Metz)",
         "197": "Lumen",
-        "203": "Falguière"
+        "203": "Falguière",
+        "219": "IBM"
       },
       "requiredForImport": "true"
     },
@@ -241,6 +243,10 @@
         "204": {
           "groupId": 204,
           "label": "Lumen"
+        },
+        "231": {
+          "groupId": 231,
+          "label": "L2S"
         }
       },
       "valueType": "array"
