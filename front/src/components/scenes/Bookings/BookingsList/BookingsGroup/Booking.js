@@ -77,6 +77,17 @@ const Booking = ({
                 >
                   Modifier le titre
                 </button>
+                <button
+                  type="button"
+                  className="dropdown-item"
+                  data-toggle="modal"
+                  data-target="#modifyEventModal"
+                  onClick={() => {
+                    handleModifyEvent(event, 'forUserName');
+                  }}
+                >
+                  Modifier pour le compte de
+                </button>
                 {event.room.allowBooking && (
                   <button
                     type="button"

@@ -9,6 +9,7 @@ import EventList from 'components/partials/EventList';
 import BookingSummary from 'components/partials/BookingSummary';
 import EventNameInput from './EventNameInput';
 import VideoProviderInput from './VideoProviderInput';
+import ForUserNameInput from './ForUserNameInput';
 
 const { CAMPUS_SACLAY } = require('../../../../../config/index');
 
@@ -21,28 +22,28 @@ const ConfirmBooking = ({
   endTime,
   confirmBooking,
   eventName,
+  forUserName,
   videoProvider,
   handleEventNameInputChange,
+  handleForUserNameInputChange,
   handleVideoProviderInputChange,
   attemptedConfirm,
   detectEnter,
 }) => {
   const [tooLongTimes, setTooLongTimes] = useState(false);
 
-  const checkTimeCoherence = () => {
-    setTooLongTimes(false);
-    if (room.campus === CAMPUS_SACLAY) {
-      const diffTime = endTime - startTime;
-      if (diffTime / 3600000 > 2) {
-        setTooLongTimes(true);
-      }
-    }
-  };
-
   useEffect(() => {
-    // Appel de la méthode checkTimeCoherence lors du montage du composant
+    const checkTimeCoherence = () => {
+      setTooLongTimes(false);
+      if (room.campus === CAMPUS_SACLAY) {
+        const diffTime = endTime - startTime;
+        if (diffTime / 3600000 > 2) {
+          setTooLongTimes(true);
+        }
+      }
+    };
     checkTimeCoherence();
-  }, [checkTimeCoherence]);
+  }, [room.campus, endTime, startTime]);
 
   const body = [
     <OptionalImage
@@ -71,7 +72,8 @@ const ConfirmBooking = ({
     ) : null,
     tooLongTimes === true ? (
       <div className="alert alert-danger" role="alert">
-        Pour un créneau supérieur à 2h, contacter{' '}
+        Pour un créneau supérieur à 2h, contacter
+        {' '}
         <a href="mailto:support.dpiet@centralesupelec.fr">
           support.dpiet@centralesupelec.fr
         </a>
@@ -84,6 +86,14 @@ const ConfirmBooking = ({
       detectEnter={detectEnter}
       attemptedConfirm={attemptedConfirm}
       key="eventNameInput"
+    />,
+    <ForUserNameInput
+      available={room.available}
+      forUserName={forUserName}
+      handleForUserNameInputChange={handleForUserNameInputChange}
+      detectEnter={detectEnter}
+      attemptedConfirm={attemptedConfirm}
+      key="forUserNameInput"
     />,
     <VideoProviderInput
       enabled={room.videoConference}
@@ -101,12 +111,12 @@ const ConfirmBooking = ({
       <ConfirmModal
         title={`Réservation de ${room.name}`}
         body={body}
-        confirmButtonText={
+        confirmButtonText={(
           <span>
             Confirmer
             <span className="d-none d-sm-inline"> la réservation</span>
           </span>
-        }
+        )}
         confirmButtonFunction={confirmBooking}
         showConfirmButton={room.available && !tooLongTimes}
         cancelActionText={room.available ? 'Annuler' : 'OK'}
@@ -122,8 +132,10 @@ ConfirmBooking.propTypes = {
   endTime: PropTypes.object.isRequired,
   confirmBooking: PropTypes.func.isRequired,
   eventName: PropTypes.string.isRequired,
+  forUserName: PropTypes.string.isRequired,
   videoProvider: PropTypes.string.isRequired,
   handleEventNameInputChange: PropTypes.func.isRequired,
+  handleForUserNameInputChange: PropTypes.func.isRequired,
   handleVideoProviderInputChange: PropTypes.func.isRequired,
   attemptedConfirm: PropTypes.bool.isRequired,
   detectEnter: PropTypes.func.isRequired,

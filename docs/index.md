@@ -2,8 +2,6 @@
 
 [_Resa_](https://resa.centralesupelec.fr/) est conçue pour faciliter l'accès aux espaces de travail et de réunion sur le campus universitaire. Que vous soyez étudiant, enseignant, personnel administratif ou membre de la communauté universitaire, notre service vous permet de réserver facilement des salles adaptées à vos besoins.
 
-![The booking pop-up](assets/booking-popup.png)
-
 ## Caractéristiques principales
 
 - **Réservation simplifiée** : Notre interface vous permet de trouver et de réserver une salle en quelques clics. Vous pouvez consulter les disponibilités, les capacités d'accueil et les équipements disponibles associés à chaque salle.

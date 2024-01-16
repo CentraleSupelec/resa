@@ -24,8 +24,7 @@ const EventList = ({
         Aucun évènement n&apos;est prévu
         {!useToday && ` le ${moment(selectedDate).format('D MMMM')} `}
         {useToday && " aujourd'hui "}
-        en
-        &nbsp;
+        en &nbsp;
         <span className="font-weight-bold">{roomName}</span>
       </h6>
     );
@@ -37,13 +36,19 @@ const EventList = ({
         {events.length >= 2 && `${events.length} évènements sont prévus`}
         {!useToday && ` le ${moment(selectedDate).format('D MMMM')} `}
         {useToday && " aujourd'hui "}
-        en
-        &nbsp;
+        en &nbsp;
         <span className="font-weight-bold">{roomName}</span>
       </h6>
       <div className="list-group mt-3">
         {events.map((event) => {
           const isHighlighted = event.id === highlightedEvent;
+          const matchForUserNameAndEventName = event.name.match(/<(.*?)>(.*)/);
+          let forUserName = null;
+          let eventName = event.name;
+          if (matchForUserNameAndEventName) {
+            forUserName = matchForUserNameAndEventName[1].trim();
+            eventName = matchForUserNameAndEventName[2].trim();
+          }
           return (
             <div
               className={`list-group-item flex-column align-items-start ${
@@ -52,29 +57,28 @@ const EventList = ({
               key={event.id}
             >
               <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{event.name}</h5>
+                <h5 className="mb-1">{eventName}</h5>
                 <span className={!isHighlighted ? 'text-muted' : ''}>
                   de&nbsp;
-                  {moment(event.startDate)
-                    .utc()
-                    .format('H[h]mm')}
+                  {moment(event.startDate).utc().format('H[h]mm')}
                   &nbsp;à&nbsp;
-                  {moment(event.endDate)
-                    .utc()
-                    .format('H[h]mm')}
+                  {moment(event.endDate).utc().format('H[h]mm')}
                 </span>
               </div>
               <span className={!isHighlighted ? 'text-muted' : ''}>
-                Réservé par
-                &nbsp;
-                <a
-                  className={!isHighlighted ? 'text-secondary' : 'text-white'}
-                  href={`mailto:${event.author.email}`}
-                >
-                  {recapitalize(event.author.firstName)}
-                  &nbsp;
-                  {recapitalize(event.author.lastName)}
-                </a>
+                Réservé par &nbsp;
+                {forUserName ? (
+                  <span>{recapitalize(forUserName)}</span>
+                ) : (
+                  <a
+                    className={!isHighlighted ? 'text-secondary' : 'text-white'}
+                    href={`mailto:${event.author.email}`}
+                  >
+                    {recapitalize(event.author.firstName)}
+                    &nbsp;
+                    {recapitalize(event.author.lastName)}
+                  </a>
+                )}
               </span>
             </div>
           );

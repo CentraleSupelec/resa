@@ -6,7 +6,7 @@ It is used in production at French engineering school CentraleSupélec and enabl
 
 [Watch the 1-minute demo >>](https://vimeo.com/250163250)
 
-![The booking pop-up](docs/assets/booking-popup.png)
+![The booking pop-up](https://github.com/oxlay/Resa/blob/master/images-for-readme/booking-popup.png)
 
 ## General structure
 
@@ -33,7 +33,7 @@ Advanced features:
 - see all the events planned for a room on a particular day
 - use direct link to book a particular room: `resa.example.com/recherche/{roomId}` (especially useful if you put QR codes outside of rooms that can be booked)
 
-![The room list](docs/assets/room-list.png)
+![The room list](https://github.com/oxlay/Resa/blob/master/images-for-readme/room-list.png)
 
 ## Built with
 
@@ -44,25 +44,13 @@ Advanced features:
 
 As well as many other projects you can find in `front/package.json` and `back/package.json`.
 
-## Contributors
+## Authors
 
-### Initial version
-
-**Lead developer:** [Anatole Beuzon](https://github.com/anatolebeuzon)
+**Lead developer:** Anatole Beuzon
 
 **Project manager:** Michel Guennoc
 
-**Contributors and reviewers:** [Ronan Pelliard](https://github.com/rpelliard) and [Sami Tabet](https://github.com/sfluor)
-
-### Since first release
-
-- [Benjamin Koltes](https://github.com/Ayc0)
-- [Guillaume Denis](https://github.com/silently)
-- [Teo Lefebvre](https://github.com/TeoLefebvre)
-- [Marius Verdier](https://github.com/marius-verdier)
-- [Thomas Houdin](https://github.com/gamma3591)
-- [Louis Vauterin](https://github.com/Louis-Vauterin)
-- [Antoine Fonlupt](https://github.com/Antoine-Fonlupt)
+**Contributors and reviewers:** Ronan Pelliard and Sami Tabet
 
 ## License
 
