@@ -56,6 +56,7 @@ As well as many other projects you can find in `front/package.json` and `back/pa
 
 ### Since first release
 
+- [Guillaume Denis](https://github.com/silently)
 - [Teo Lefebvre](https://github.com/TeoLefebvre)
 - [Marius Verdier](https://github.com/marius-verdier)
 - [Thomas Houdin](https://github.com/gamma3591)
