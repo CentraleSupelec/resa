@@ -71,9 +71,6 @@ export function sendModifRequest(event, newAttr) {
 
     // Do nothing if eventName is empty
     if (!newAttr.eventName) return;
-    if (newAttr.forUserName) {
-      newAttr.eventName = `<${newAttr.forUserName}> ${newAttr.eventName}`;
-    }
     dispatch(requestModif());
 
     // Format dates
@@ -110,9 +107,7 @@ export function sendModifRequest(event, newAttr) {
         },
         body: JSON.stringify({
           eventId: event.id,
-          newEventName: newAttr.forUserName
-            ? `<${newAttr.forUserName}> ${newAttr.eventName}`
-            : newAttr.eventName,
+          newEventName: newAttr.eventName,
           newStartDate,
           newEndDate,
           newRoomId: newAttr.roomId,

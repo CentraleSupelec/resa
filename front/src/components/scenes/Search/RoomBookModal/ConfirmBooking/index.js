@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import OptionalImage from 'react-image';
+import { connect } from 'react-redux';
+
 // src
 import config from 'config';
 import ConfirmModal from 'components/partials/Modals/ConfirmModal';
@@ -11,7 +13,11 @@ import EventNameInput from './EventNameInput';
 import VideoProviderInput from './VideoProviderInput';
 import ForUserNameInput from './ForUserNameInput';
 
-const { CAMPUS_SACLAY } = require('../../../../../config/index');
+const {
+  CAMPUS_SACLAY,
+  LUMEN_GROUP_ID,
+  BUILDING_LUMEN,
+} = require('../../../../../config/index');
 
 const imageExtension = 'jpg';
 
@@ -29,20 +35,18 @@ const ConfirmBooking = ({
   handleVideoProviderInputChange,
   attemptedConfirm,
   detectEnter,
+  memberOf,
 }) => {
   const [tooLongTimes, setTooLongTimes] = useState(false);
 
   useEffect(() => {
-    const checkTimeCoherence = () => {
-      setTooLongTimes(false);
-      if (room.campus === CAMPUS_SACLAY) {
-        const diffTime = endTime - startTime;
-        if (diffTime / 3600000 > 2) {
-          setTooLongTimes(true);
-        }
+    setTooLongTimes(false);
+    if (room.campus === CAMPUS_SACLAY) {
+      const diffTime = endTime - startTime;
+      if (diffTime / 3600000 > 2) {
+        setTooLongTimes(true);
       }
-    };
-    checkTimeCoherence();
+    }
   }, [room.campus, endTime, startTime]);
 
   const body = [
@@ -72,8 +76,7 @@ const ConfirmBooking = ({
     ) : null,
     tooLongTimes === true ? (
       <div className="alert alert-danger" role="alert">
-        Pour un créneau supérieur à 2h, contacter
-        {' '}
+        Pour un créneau supérieur à 2h, contacter{' '}
         <a href="mailto:support.dpiet@centralesupelec.fr">
           support.dpiet@centralesupelec.fr
         </a>
@@ -87,14 +90,16 @@ const ConfirmBooking = ({
       attemptedConfirm={attemptedConfirm}
       key="eventNameInput"
     />,
-    <ForUserNameInput
-      available={room.available}
-      forUserName={forUserName}
-      handleForUserNameInputChange={handleForUserNameInputChange}
-      detectEnter={detectEnter}
-      attemptedConfirm={attemptedConfirm}
-      key="forUserNameInput"
-    />,
+    memberOf.includes(LUMEN_GROUP_ID) && room.building === BUILDING_LUMEN ? (
+      <ForUserNameInput
+        available={room.available}
+        forUserName={forUserName}
+        handleForUserNameInputChange={handleForUserNameInputChange}
+        detectEnter={detectEnter}
+        attemptedConfirm={attemptedConfirm}
+        key="forUserNameInput"
+      />
+    ) : null,
     <VideoProviderInput
       enabled={room.videoConference}
       providers={room.videoProviders}
@@ -111,12 +116,12 @@ const ConfirmBooking = ({
       <ConfirmModal
         title={`Réservation de ${room.name}`}
         body={body}
-        confirmButtonText={(
+        confirmButtonText={
           <span>
             Confirmer
             <span className="d-none d-sm-inline"> la réservation</span>
           </span>
-        )}
+        }
         confirmButtonFunction={confirmBooking}
         showConfirmButton={room.available && !tooLongTimes}
         cancelActionText={room.available ? 'Annuler' : 'OK'}
@@ -139,6 +144,9 @@ ConfirmBooking.propTypes = {
   handleVideoProviderInputChange: PropTypes.func.isRequired,
   attemptedConfirm: PropTypes.bool.isRequired,
   detectEnter: PropTypes.func.isRequired,
+  memberOf: PropTypes.array.isRequired,
 };
 
-export default ConfirmBooking;
+const mapStateToProps = (state) => ({ ...state.user });
+
+export default connect(mapStateToProps)(ConfirmBooking);

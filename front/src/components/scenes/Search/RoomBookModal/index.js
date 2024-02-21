@@ -92,7 +92,7 @@ RoomBookModal.propTypes = {
   selectedStartTime: PropTypes.object.isRequired,
   selectedEndTime: PropTypes.object.isRequired,
   eventName: PropTypes.string.isRequired,
-  forUserName: PropTypes.string.isRequired,
+  forUserName: PropTypes.string,
   videoProvider: PropTypes.string.isRequired,
   attemptedConfirm: PropTypes.bool.isRequired,
   failedBecauseAlreadyBooked: PropTypes.bool.isRequired,
@@ -111,6 +111,7 @@ RoomBookModal.defaultProps = {
   errorStatus: null,
   room: null,
   directLinkRoom: null,
+  forUserName: '',
 };
 
 export default RoomBookModal;

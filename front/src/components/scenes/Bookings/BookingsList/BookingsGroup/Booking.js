@@ -9,9 +9,7 @@ import 'moment/locale/fr';
 import RoomResource from 'containers/partials/RoomResource';
 import extractResources from 'services/extractResources';
 
-const Booking = ({
-  event, handleCancelEvent, handleModifyEvent, isFuture,
-}) => (
+const Booking = ({ event, handleCancelEvent, handleModifyEvent, isFuture }) => (
   <div className="card mb-3">
     <div className="card-body">
       <div className="row align-items-center justify-content-between">
@@ -23,8 +21,8 @@ const Booking = ({
         </div>
         <div className="col-lg-4">
           <ul>
-            {event.room
-              && extractResources(event.room, true).map((res) => (
+            {event.room &&
+              extractResources(event.room, true).map((res) => (
                 <RoomResource
                   key={`${event.room.id}#${res.type}`}
                   resource={res}
@@ -35,19 +33,13 @@ const Booking = ({
         </div>
         <div className="col-lg-3 my-4 custom-info-text-color">
           <h5>{event.name}</h5>
-          {moment(event.startDate)
-            .utc()
-            .format('dddd D MMMM YYYY')}
+          {moment(event.startDate).utc().format('dddd D MMMM YYYY')}
           <br />
-          {moment(event.startDate)
-            .utc()
-            .format('H[h]mm')}
+          {moment(event.startDate).utc().format('H[h]mm')}
           &nbsp;
           <FontAwesomeIcon icon={faAngleRight} />
           &nbsp;
-          {moment(event.endDate)
-            .utc()
-            .format('H[h]mm')}
+          {moment(event.endDate).utc().format('H[h]mm')}
         </div>
         <div className="col-lg-3 custom-text-right-above-lg custom-text-center-under-lg">
           {isFuture && !event.local && (
@@ -76,17 +68,6 @@ const Booking = ({
                   }}
                 >
                   Modifier le titre
-                </button>
-                <button
-                  type="button"
-                  className="dropdown-item"
-                  data-toggle="modal"
-                  data-target="#modifyEventModal"
-                  onClick={() => {
-                    handleModifyEvent(event, 'forUserName');
-                  }}
-                >
-                  Modifier pour le compte de
                 </button>
                 {event.room.allowBooking && (
                   <button

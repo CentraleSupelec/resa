@@ -74,7 +74,7 @@ export function sendBookRequest() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          eventName: forUserName ? `<${forUserName}> ${eventName}` : eventName,
+          eventName: forUserName ? `${forUserName} - ${eventName}` : eventName,
           videoProvider,
           startDate: formattedDate.start,
           endDate: formattedDate.end,

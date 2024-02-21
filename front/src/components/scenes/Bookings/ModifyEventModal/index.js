@@ -16,7 +16,6 @@ export default class extends React.PureComponent {
     newAttributes: PropTypes.object.isRequired,
     handleNameInputChange: PropTypes.func.isRequired,
     handleDateInputChange: PropTypes.object.isRequired,
-    handleForUserNameInputChange: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -41,7 +40,6 @@ export default class extends React.PureComponent {
       newAttributes,
       handleNameInputChange,
       handleDateInputChange,
-      handleForUserNameInputChange,
     } = this.props;
 
     return (
@@ -61,7 +59,6 @@ export default class extends React.PureComponent {
               sendUpdatedBooking={this.sendUpdatedBooking}
               handleNameInputChange={handleNameInputChange}
               handleDateInputChange={handleDateInputChange}
-              handleForUserNameInputChange={handleForUserNameInputChange}
               newAttributes={newAttributes}
               detectEnter={this.detectEnter}
               attemptedConfirm={status.attemptedConfirm}
