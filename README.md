@@ -56,6 +56,7 @@ As well as many other projects you can find in `front/package.json` and `back/pa
 
 ### Since first release
 
+- [Benjamin Koltes](https://github.com/Ayc0)
 - [Guillaume Denis](https://github.com/silently)
 - [Teo Lefebvre](https://github.com/TeoLefebvre)
 - [Marius Verdier](https://github.com/marius-verdier)
