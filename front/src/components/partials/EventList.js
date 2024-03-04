@@ -24,8 +24,7 @@ const EventList = ({
         Aucun évènement n&apos;est prévu
         {!useToday && ` le ${moment(selectedDate).format('D MMMM')} `}
         {useToday && " aujourd'hui "}
-        en
-        &nbsp;
+        en &nbsp;
         <span className="font-weight-bold">{roomName}</span>
       </h6>
     );
@@ -37,8 +36,7 @@ const EventList = ({
         {events.length >= 2 && `${events.length} évènements sont prévus`}
         {!useToday && ` le ${moment(selectedDate).format('D MMMM')} `}
         {useToday && " aujourd'hui "}
-        en
-        &nbsp;
+        en &nbsp;
         <span className="font-weight-bold">{roomName}</span>
       </h6>
       <div className="list-group mt-3">
@@ -55,18 +53,13 @@ const EventList = ({
                 <h5 className="mb-1">{event.name}</h5>
                 <span className={!isHighlighted ? 'text-muted' : ''}>
                   de&nbsp;
-                  {moment(event.startDate)
-                    .utc()
-                    .format('H[h]mm')}
+                  {moment(event.startDate).utc().format('H[h]mm')}
                   &nbsp;à&nbsp;
-                  {moment(event.endDate)
-                    .utc()
-                    .format('H[h]mm')}
+                  {moment(event.endDate).utc().format('H[h]mm')}
                 </span>
               </div>
               <span className={!isHighlighted ? 'text-muted' : ''}>
-                Réservé par
-                &nbsp;
+                Réservé par &nbsp;
                 <a
                   className={!isHighlighted ? 'text-secondary' : 'text-white'}
                   href={`mailto:${event.author.email}`}

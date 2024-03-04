@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import OptionalImage from 'react-image';
+import { connect } from 'react-redux';
+
 // src
 import config from 'config';
 import ConfirmModal from 'components/partials/Modals/ConfirmModal';
@@ -9,8 +11,13 @@ import EventList from 'components/partials/EventList';
 import BookingSummary from 'components/partials/BookingSummary';
 import EventNameInput from './EventNameInput';
 import VideoProviderInput from './VideoProviderInput';
+import ForUserNameInput from './ForUserNameInput';
 
-const { CAMPUS_SACLAY } = require('../../../../../config/index');
+const {
+  CAMPUS_SACLAY,
+  LUMEN_GROUP_ID,
+  BUILDING_LUMEN,
+} = require('../../../../../config/index');
 
 const imageExtension = 'jpg';
 
@@ -21,15 +28,18 @@ const ConfirmBooking = ({
   endTime,
   confirmBooking,
   eventName,
+  forUserName,
   videoProvider,
   handleEventNameInputChange,
+  handleForUserNameInputChange,
   handleVideoProviderInputChange,
   attemptedConfirm,
   detectEnter,
+  memberOf,
 }) => {
   const [tooLongTimes, setTooLongTimes] = useState(false);
 
-  const checkTimeCoherence = () => {
+  useEffect(() => {
     setTooLongTimes(false);
     if (room.campus === CAMPUS_SACLAY) {
       const diffTime = endTime - startTime;
@@ -37,12 +47,7 @@ const ConfirmBooking = ({
         setTooLongTimes(true);
       }
     }
-  };
-
-  useEffect(() => {
-    // Appel de la méthode checkTimeCoherence lors du montage du composant
-    checkTimeCoherence();
-  }, [checkTimeCoherence]);
+  }, [room.campus, endTime, startTime]);
 
   const body = [
     <OptionalImage
@@ -85,6 +90,16 @@ const ConfirmBooking = ({
       attemptedConfirm={attemptedConfirm}
       key="eventNameInput"
     />,
+    memberOf.includes(LUMEN_GROUP_ID) && room.building === BUILDING_LUMEN ? (
+      <ForUserNameInput
+        available={room.available}
+        forUserName={forUserName}
+        handleForUserNameInputChange={handleForUserNameInputChange}
+        detectEnter={detectEnter}
+        attemptedConfirm={attemptedConfirm}
+        key="forUserNameInput"
+      />
+    ) : null,
     <VideoProviderInput
       enabled={room.videoConference}
       providers={room.videoProviders}
@@ -122,11 +137,16 @@ ConfirmBooking.propTypes = {
   endTime: PropTypes.object.isRequired,
   confirmBooking: PropTypes.func.isRequired,
   eventName: PropTypes.string.isRequired,
+  forUserName: PropTypes.string.isRequired,
   videoProvider: PropTypes.string.isRequired,
   handleEventNameInputChange: PropTypes.func.isRequired,
+  handleForUserNameInputChange: PropTypes.func.isRequired,
   handleVideoProviderInputChange: PropTypes.func.isRequired,
   attemptedConfirm: PropTypes.bool.isRequired,
   detectEnter: PropTypes.func.isRequired,
+  memberOf: PropTypes.array.isRequired,
 };
 
-export default ConfirmBooking;
+const mapStateToProps = (state) => ({ ...state.user });
+
+export default connect(mapStateToProps)(ConfirmBooking);

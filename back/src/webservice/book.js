@@ -243,10 +243,9 @@ async function getStapledPersonEventList(
     .filter((event) => event.room !== null) // Filter out events about rooms that don't exist anymore in GEODE
     .filter((event) => event.endDate.isAfter(moment().subtract(3, "months"))); // Filter out past bookings older than 3 months old
 
-    parsedEvents.sort(
-      (eventA, eventB) => eventA.startDate.valueOf() - eventB.startDate.valueOf(),
-    );
-  
+  parsedEvents.sort(
+    (eventA, eventB) => eventA.startDate.valueOf() - eventB.startDate.valueOf(),
+  );
 
   // Group past and future events separately
   const groupedParsedEvents /* : { [key: "future" | "past" ]: Event_Room[] } */ = groupBy(
