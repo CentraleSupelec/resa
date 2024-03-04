@@ -247,6 +247,10 @@
         "231": {
           "groupId": 231,
           "label": "L2S"
+        },
+        "232": {
+          "groupId": 232,
+          "label": "DISI/Pôle pédago"
         }
       },
       "valueType": "array"
