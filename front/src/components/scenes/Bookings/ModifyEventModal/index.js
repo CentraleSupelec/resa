@@ -20,7 +20,7 @@ export default class extends React.PureComponent {
 
   static defaultProps = {
     event: null,
-  };
+  }
 
   sendUpdatedBooking = () => {
     const { dispatch, event, newAttributes } = this.props;
@@ -65,16 +65,16 @@ export default class extends React.PureComponent {
             />
           ) : null}
           {status.isFetching && <Loading />}
-          {status.frontendValidationPassed &&
-            !status.isFetching &&
-            status.success && <SuccessfulModify />}
-          {status.frontendValidationPassed &&
-            !status.isFetching &&
-            !status.success && (
+          {status.frontendValidationPassed
+            && !status.isFetching
+            && status.success && <SuccessfulModify />}
+          {status.frontendValidationPassed
+            && !status.isFetching
+            && !status.success && (
               <FailedModify
                 failedBecauseAlreadyBooked={status.failedBecauseAlreadyBooked}
               />
-            )}
+          )}
         </div>
       </div>
     );

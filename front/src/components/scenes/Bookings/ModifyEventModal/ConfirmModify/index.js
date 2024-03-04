@@ -16,33 +16,32 @@ const ConfirmModify = ({
   detectEnter,
   attemptedConfirm,
 }) => {
-  const body =
-    modifType === 'name' ? (
-      <NameChangeBody
-        event={event}
-        handleNameInputChange={handleNameInputChange}
-        eventName={newAttributes.eventName}
-        detectEnter={detectEnter}
-        attemptedConfirm={attemptedConfirm}
-      />
-    ) : (
-      <TimeChangeBody
-        event={event}
-        handleDateInputChange={handleDateInputChange}
-        newAttributes={newAttributes}
-      />
-    );
+  const body = modifType === 'name' ? (
+    <NameChangeBody
+      event={event}
+      handleNameInputChange={handleNameInputChange}
+      eventName={newAttributes.eventName}
+      detectEnter={detectEnter}
+      attemptedConfirm={attemptedConfirm}
+    />
+  ) : (
+    <TimeChangeBody
+      event={event}
+      handleDateInputChange={handleDateInputChange}
+      newAttributes={newAttributes}
+    />
+  );
 
   return (
     <ConfirmModal
       title="Modification de votre réservation"
       body={body}
-      confirmButtonText={
+      confirmButtonText={(
         <span>
           Modifier
           <span className="d-none d-sm-inline"> la réservation</span>
         </span>
-      }
+)}
       confirmButtonFunction={sendUpdatedBooking}
       cancelActionText="Ne pas modifier"
     />

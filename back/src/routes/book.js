@@ -45,6 +45,7 @@ router.post("/add/", requireAgendaAnnuaire, async (
 
   /!\ startDate and endDate must be in ISO 8601 string format.
   */
+
   try {
     // Sanity check of inputs
     validate.input(validate.schema.addEvent, req.body);
@@ -60,7 +61,7 @@ router.post("/add/", requireAgendaAnnuaire, async (
     );
     if (!room.allowBookings) {
       if (room.belongsTo.length === 0) {
-        logger.error("Room need to belongs to a group that has some members");
+        // ? Room need to belongs to a group that has some members
         res.sendStatus(500);
         return;
       }

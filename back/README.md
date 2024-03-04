@@ -23,24 +23,10 @@ git clone
 cd back
 ```
 
-### Mongo
+### Database
 
-With a global installation:
-
-- [Install mongo globally](https://docs.mongodb.com/manual/installation/)
-- Start mongo service: run `mongod`
-- Connect to mongo service: run `mongo`
-
-Alternatively, using docker:
-
-- Install docker and run it (for instance through the Docker Desktop app, or through the `dockerd` command)
-- Start mongo service: `docker run --rm -p 27017:27017 -d -v ~/data:/data/db --name mongodb mongo`
-- Connect to mongo service: `docker run -it --link mongodb:mongo --rm mongo mongo --host mongo`
-
-Alternatively, using docker-compose:
-
-- Start docker containers `docker-compose up -d`
-- Connect to mongo service with mongosh `docker-compose exec -it mongodb mongosh`
+- Start docker containers `docker compose up -d`
+- Connect to mongo service with mongosh `docker compose exec -it mongodb mongosh`
 
 Then create the user `resa` on the database, this is the express application user:
 
@@ -98,8 +84,8 @@ Create `src/config/secrets.json`:
     "tokenSecret": "<random string to generate random strings for token>"
   },
   "smtp": {
-    "host": "<smtp-url>",
-    "port": "<smtp-port>"
+    "host": "localhost",
+    "port": "1025"
   },
   "adminEmail": "<admin-mail>",
   "ccEmail": "<cc-mail>",
@@ -134,22 +120,8 @@ And replace <resa-base-url> in your secrets.json by >`http://localhost.<domain-y
 
 Ensure the mongo service is running:
 
-- if installed globally:
-
 ```console
-$ mongod
-```
-
-- if using docker:
-
-```console
-$ yarn mongo-docker-start
-```
-
-- if using docker-compose:
-
-```console
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 Launch the app (see port default setting in `bin/www` file):
@@ -163,7 +135,7 @@ $ yarn dev
 Connect to the mongo shell:
 
 ```console
-$ yarn mongo-docker-shell
+$ docker compose exec -it mongodb mongosh
 ```
 
 ## Docker setup

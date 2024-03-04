@@ -20,7 +20,6 @@ const RoomBookModal = ({
   selectedStartTime,
   selectedEndTime,
   eventName,
-  forUserName,
   videoProvider,
   attemptedConfirm,
   failedBecauseAlreadyBooked,
@@ -28,7 +27,6 @@ const RoomBookModal = ({
   failedBecauseNeedPermission,
   handleSendBookRequest,
   handleSetEventName,
-  handleSetForUserName,
   handleSetVideoProvider,
   detectEnter,
   directLinkRoom,
@@ -50,10 +48,8 @@ const RoomBookModal = ({
           endTime={selectedEndTime}
           confirmBooking={handleSendBookRequest}
           handleEventNameInputChange={handleSetEventName}
-          handleForUserNameInputChange={handleSetForUserName}
           handleVideoProviderInputChange={handleSetVideoProvider}
           eventName={eventName}
-          forUserName={forUserName}
           videoProvider={videoProvider}
           attemptedConfirm={attemptedConfirm}
           detectEnter={detectEnter}
@@ -92,7 +88,6 @@ RoomBookModal.propTypes = {
   selectedStartTime: PropTypes.object.isRequired,
   selectedEndTime: PropTypes.object.isRequired,
   eventName: PropTypes.string.isRequired,
-  forUserName: PropTypes.string,
   videoProvider: PropTypes.string.isRequired,
   attemptedConfirm: PropTypes.bool.isRequired,
   failedBecauseAlreadyBooked: PropTypes.bool.isRequired,
@@ -100,7 +95,6 @@ RoomBookModal.propTypes = {
   failedBecauseNeedPermission: PropTypes.bool.isRequired,
   handleSendBookRequest: PropTypes.func.isRequired,
   handleSetEventName: PropTypes.func.isRequired,
-  handleSetForUserName: PropTypes.func.isRequired,
   handleSetVideoProvider: PropTypes.func.isRequired,
   detectEnter: PropTypes.func.isRequired,
   room: PropTypes.object,
@@ -111,7 +105,6 @@ RoomBookModal.defaultProps = {
   errorStatus: null,
   room: null,
   directLinkRoom: null,
-  forUserName: '',
 };
 
 export default RoomBookModal;

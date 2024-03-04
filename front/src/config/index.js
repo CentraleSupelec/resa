@@ -27,8 +27,6 @@ const loginQuery = querystring.stringify({
 export const loginRequest = `${config.cas.loginUrl}?${loginQuery}`;
 export const CAMPUSES = ['Saclay', 'Metz', 'Rennes'];
 export const CAMPUS_SACLAY = 'Saclay';
-export const BUILDING_LUMEN = 'Lumen';
-export const LUMEN_GROUP_ID = 204;
-export const BUILDINGS = ['Falguière', 'IBM', BUILDING_LUMEN];
+export const BUILDINGS = ['Falguière', 'IBM'];
 
 export default config;

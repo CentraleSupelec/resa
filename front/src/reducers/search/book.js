@@ -1,9 +1,8 @@
 // src
-import { filterTitles } from 'services/string';
+import { filterTitles } from "services/string";
 import {
   SELECT_ROOM_TO_BOOK,
   SET_EVENT_NAME,
-  SET_FOR_USER_NAME,
   SET_VIDEO_PROVIDER,
   ATTEMPT_BOOK_CONFIRM,
   REQUEST_BOOK,
@@ -12,13 +11,13 @@ import {
   RECEIVE_ROOM_ALREADY_BOOKED_ERROR,
   RECEIVE_FAILED_BECAUSE_MISSING_EMAIL_ERROR,
   RECEIVE_FAILED_BECAUSE_NEED_PERMISSION,
-} from 'actions/rooms/book/types';
+} from "actions/rooms/book/types";
 
 export default function book(
   state = {
     room: null,
-    eventName: '',
-    videoProvider: 'none',
+    eventName: "",
+    videoProvider: "none",
     requestSent: false,
     isFetching: false,
     success: false,
@@ -37,12 +36,11 @@ export default function book(
       return {
         ...state,
         room: action.payload,
-        eventName: '',
-        forUserName: '',
+        eventName: "",
         videoProvider:
-          action.payload.visioType === 'teams'
+          action.payload.visioType === "teams"
             ? action.payload.visioType
-            : 'none',
+            : "none",
         requestSent: false,
         isFetching: false,
         success: false,
@@ -57,11 +55,6 @@ export default function book(
       return {
         ...state,
         eventName: filterTitles(action.payload),
-      };
-    case SET_FOR_USER_NAME:
-      return {
-        ...state,
-        forUserName: filterTitles(action.payload),
       };
     case SET_VIDEO_PROVIDER:
       return {

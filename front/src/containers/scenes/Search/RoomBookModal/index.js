@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {
   sendBookRequest,
   setEventName,
-  setForUserName,
   setVideoProvider,
 } from 'actions/rooms/book';
 import Component from 'components/scenes/Search/RoomBookModal';
@@ -24,7 +23,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleSendBookRequest: () => dispatch(sendBookRequest()),
   handleSetEventName: (event) => dispatch(setEventName(event.target.value)),
-  handleSetForUserName: (event) => dispatch(setForUserName(event.target.value)),
   handleSetVideoProvider: (event) => dispatch(setVideoProvider(event.target.value)),
   detectEnter: (event) => {
     if (event.key === 'Enter') dispatch(sendBookRequest());
